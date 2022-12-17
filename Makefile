@@ -10,6 +10,7 @@ SRCS =	main.c	\
 		str_mnp.c		\
 		repetition_tools.c	\
 		win_manager.c	\
+		2dmap.c	\
 
 all : $(NAME)
 

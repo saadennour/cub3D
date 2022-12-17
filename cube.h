@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/17 14:56:26 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/17 22:54:34 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct t_colors
 
 typedef struct t_config
 {
-	char		**map;
 	char		**data;
 	t_colors	*colors;
 	t_idpaths	*idpaths;
@@ -46,6 +45,8 @@ typedef	struct t_window
 {
 	void	*mlx;
 	void	*win;
+	void	*wall;
+	void	*icon;
 }	t_window;
 
 
@@ -76,7 +77,9 @@ void		free_struct(t_config *config);
 char		*ft_strdup(const char *src);
 void		free_2darray(char **str);
 int			shut(t_window *window);
+int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		start_game(t_config *config);
+void		minimap(char **map, t_window *window);
 
 #endif
