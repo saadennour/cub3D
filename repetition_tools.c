@@ -1,79 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   repetition_tools.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/15 20:03:49 by sfarhan           #+#    #+#             */
+/*   Updated: 2022/12/16 18:26:52 by sfarhan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 
-void    handle_error(t_config *config)
+void	handle_error(t_config *config)
 {
-    printf ("Error : Parsing Error\n");
-    free_struct(config);
-    exit (0);
+	printf ("Error : Parsing Error\n");
+	free_struct(config);
+	exit (0);
 }
 
-void    map_error(t_config *config)
+void	map_error(t_config *config)
 {
-    printf ("Error : Map not valid\n");
-    free_struct(config);
-    exit (0);
+	printf ("Error : Map not valid\n");
+	free_struct(config);
+	exit (0);
 }
 
-int whitesp_loop(char *str, int i)
+int	whitesp_loop(char *str, int i)
 {
-    while (ft_strchr(str[i], " \t\r\v\f"))
-        i++;
-    return (i);
+	while (ft_strchr(str[i], " \t\r\v\f"))
+		i++;
+	return (i);
 }
 
-void    check_rgb(char **rgb, t_config *config)
+void	check_rgb(char **rgb, t_config *config)
 {
-    int i;
-    int j;
-    int degree;
+	int	i;
+	int	j;
+	int	degree;
 
-    i = -1;
-    if (line_counter(rgb) != 3)
-        handle_error(config);
-    while (rgb[++i])
-    {
-        j = 0;
-        while (rgb[i][j])
-        {
-            if (!ft_isdigit(rgb[i][j]))
-            {
-                free_2darray(rgb);
-                handle_error(config);
-            }
-            j++;
-        }
-        degree = ft_atoi(rgb[i]);
-        if (degree < 0 || degree > 255)
-        {
-            free_2darray(rgb);
-            handle_error(config);
-        }
-    }
+	i = -1;
+	if (line_counter(rgb) != 3)
+		handle_error(config);
+	while (rgb[++i])
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			if (!ft_isdigit(rgb[i][j]))
+			{
+				free_2darray(rgb);
+				handle_error(config);
+			}
+			j++;
+		}
+		degree = ft_atoi(rgb[i]);
+		if (degree < 0 || degree > 255)
+		{
+			free_2darray(rgb);
+			handle_error(config);
+		}
+	}
 }
 
-int line_counter(char **str)
+int	line_counter(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-void    free_2darray(char **str)
+void	free_2darray(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        free (str[i++]);
-    free (str);
+	i = 0;
+	while (str[i])
+		free (str[i++]);
+	free (str);
 }
 
-void    free_struct(t_config *config)
+void	free_struct(t_config *config)
 {
-    free_2darray(config->data);
-    free (config->colors);
-    free (config->idpaths);
+	free_2darray(config->data);
+	free (config->colors);
+	free (config->idpaths);
+}
+
+int	check_textures(t_config *config, char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		handle_error(config);
+	return (0);
 }

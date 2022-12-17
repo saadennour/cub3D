@@ -1,6 +1,6 @@
 NAME = cub3D
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
 
 SRCS =	main.c	\
 		parsing.c	\
@@ -9,6 +9,7 @@ SRCS =	main.c	\
 		split.c			\
 		str_mnp.c		\
 		repetition_tools.c	\
+		win_manager.c	\
 
 all : $(NAME)
 
