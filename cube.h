@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/17 22:54:34 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:14:48 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef	struct t_window
 	void	*win;
 	void	*wall;
 	void	*icon;
+	void	*bg;
+	int		x;
+	int		y;
 }	t_window;
 
 

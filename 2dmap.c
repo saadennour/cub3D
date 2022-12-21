@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/17 23:51:11 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:21:12 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,15 @@ void	minimap(char **map, t_window *window)
 		while (map[i][j])
 		{
 			if (map[i][j] == '1')
-				mlx_put_image_to_window(window->mlx, window->win, window->wall, j * 80, (i - 6) * 80);
+				mlx_put_image_to_window(window->mlx, window->win, window->wall, j * 40, (i - 6) * 40);
+			else if (ft_strchr(map[i][j], "0 "))
+				mlx_put_image_to_window(window->mlx, window->win, window->bg, j * 40, (i - 6) * 40);
 			else if (ft_strchr(map[i][j], "NSWE"))
-				mlx_put_image_to_window(window->mlx, window->win, window->icon, j * 80, (i - 6) * 80);
+			{
+				mlx_put_image_to_window(window->mlx, window->win, window->icon, j * 40, (i - 6) * 40);
+				window->y = j * 40;
+				window->x = (i - 6) * 40;
+			}
 			j++;
 		}
 		i++;

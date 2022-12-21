@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 06:48:19 by saadennour        #+#    #+#             */
-/*   Updated: 2022/12/16 16:25:12 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/20 16:48:13 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	mapscan(t_config *config)
 		}
 		i++;
 	}
+	if (n != 1)
+		map_error(config);
 }
 
 void	top_x_bottom(t_config *config)
