@@ -11,6 +11,7 @@ SRCS =	main.c	\
 		repetition_tools.c	\
 		win_manager.c	\
 		2dmap.c	\
+		draw_shapes.c \
 
 all : $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/20 17:20:22 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/22 16:43:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	start_game(t_config *config)
 	t_window	window;
 	
 	window.mlx = mlx_init();
-	window.win = mlx_new_window(window.mlx, 80 * ft_strlen(config->data[6]), 80 * line_counter(&config->data[6]), "CUBE3D");
+	window.win = mlx_new_window(window.mlx, 40 * ft_strlen(config->data[6]), 40 * line_counter(&config->data[6]), "CUBE3D");
 	window.wall = mlx_xpm_file_to_image(window.mlx, "wall.xpm", &w, &h);
 	window.icon = mlx_xpm_file_to_image(window.mlx, "player.xpm", &w, &h);
 	window.bg = mlx_xpm_file_to_image(window.mlx, "black.xpm", &w, &h);
+	draw_square(17, 0, &window, BEIGE);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);

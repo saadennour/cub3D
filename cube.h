@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/20 17:14:48 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/22 16:31:03 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,31 @@
 # include <unistd.h>
 # include <mlx.h>
 
+# define BEIGE 0XF0F8FF
+# define SKIN  0XE9967A
+
 typedef struct t_idpaths
 {
 	char	*north_path;
 	char	*south_path;
 	char	*east_path;
 	char	*west_path;
-}	t_idpaths;
+}				t_idpaths;
 
 typedef struct t_colors
 {
 	int	floor[3];
 	int	ceiling[3];
-}	t_colors;
+}				t_colors;
 
 typedef struct t_config
 {
 	char		**data;
 	t_colors	*colors;
 	t_idpaths	*idpaths;
-}	t_config;
+}				t_config;
 
-typedef	struct t_window
+typedef struct t_window
 {
 	void	*mlx;
 	void	*win;
@@ -50,8 +53,7 @@ typedef	struct t_window
 	void	*bg;
 	int		x;
 	int		y;
-}	t_window;
-
+}				t_window;
 
 void		check_extension(char *filename);
 t_config	get_config(int fd);
@@ -84,5 +86,6 @@ int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
+void	    draw_square(int x, int y, t_window *p, int color);
 
 #endif
