@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/22 16:31:03 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:05:27 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <unistd.h>
 # include <mlx.h>
 
-# define BEIGE 0XF0F8FF
-# define SKIN  0XE9967A
+# define BEIGE	0XF0F8FF
+# define SKIN	0XE9967A
+# define RED	0x00FF0000
 
 typedef struct t_idpaths
 {
@@ -86,6 +87,6 @@ int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
-void	    draw_square(int x, int y, t_window *p, int color);
+void    	draw_square(int x, int y, t_window *p, int color, int size);
 
 #endif

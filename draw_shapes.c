@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   draw_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2022/12/22 16:48:52 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:04:17 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void    draw_square(int x, int y, t_window *p, int color)
+void    draw_square(int x, int y, t_window *p, int color, int size)
 {
 	int square_x;
 	int square_y;
 	int	temp_x;
 
-	square_x = x + 40;
-	square_y = y + 40;
+	square_x = x + size;
+	square_y = y + size;
 	temp_x = x;
 	while (y < square_y)
 	{

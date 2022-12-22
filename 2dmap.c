@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/22 16:44:27 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:07:45 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	minimap(char **map, t_window *window)
 		while (map[i][j])
 		{
 			if (map[i][j] == '1')
-				draw_square(j * 40, (i - 6) * 40, window, SKIN);
-			else if (ft_strchr(map[i][j], "0 "))
-				draw_square(j * 40, (i - 6) * 40, window, BEIGE);
+				draw_square(j * 40, (i - 6) * 40, window, SKIN, 40);
+			else if (ft_strchr(map[i][j], "0"))
+				draw_square(j * 40, (i - 6) * 40, window, BEIGE, 40);
 			else if (ft_strchr(map[i][j], "NSWE"))
 			{
-				mlx_put_image_to_window(window->mlx, window->win, window->icon, j * 40, (i - 6) * 40);
+				draw_square(j * 40, (i - 6) * 40, window, BEIGE, 40);
+				draw_square(j * 40, (i - 6) * 40, window, RED, 10);
 				window->y = j * 40;
 				window->x = (i - 6) * 40;
 			}
