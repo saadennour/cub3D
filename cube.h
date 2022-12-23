@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/23 00:05:27 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/23 17:12:05 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ typedef struct t_window
 {
 	void	*mlx;
 	void	*win;
-	void	*wall;
-	void	*icon;
-	void	*bg;
+	char	**map;
+	void	*img;
 	int		x;
 	int		y;
 }				t_window;
@@ -88,5 +87,6 @@ int			check_textures(t_config *config, char *file);
 void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
 void    	draw_square(int x, int y, t_window *p, int color, int size);
+void		find_player(t_window *window, char **map);
 
 #endif
