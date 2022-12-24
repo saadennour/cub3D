@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 06:48:19 by saadennour        #+#    #+#             */
-/*   Updated: 2022/12/22 23:58:30 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/24 13:21:24 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	check_walls(t_config *config)
 		j = 1;
 		while (config->data[i][j])
 		{
-			if (config->data[i][j] == '0')
+			if (ft_strchr(config->data[i][j], "0NSWE"))
 			{
 				if (ft_strchr(config->data[i][j + 1], " ")
 					|| ft_strchr(config->data[i][j - 1], " ")

@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/23 17:12:29 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/24 12:14:25 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == 0)
 	{
-		window->y -= 5;
+		window->y -= 10;
 		minimap(window->map, window);
 	}
 	else if (keycode == 1)
 	{
-		window->x += 5;
+		window->x += 10;
 		minimap(window->map, window);
 	}
 	else if (keycode == 2)
 	{
-		window->y += 5;
+		window->y += 10;
 		minimap(window->map, window);
 	}
 	else if (keycode == 13)
 	{
-		window->x -= 5;
+		window->x -= 10;
 		minimap(window->map, window);
 	}
 	return (0);
