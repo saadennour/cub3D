@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/24 12:14:25 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:55:47 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == 0)
 	{
-		window->y -= 10;
+		window->y -= 7;
 		minimap(window->map, window);
 	}
 	else if (keycode == 1)
 	{
-		window->x += 10;
+		window->x += 7;
 		minimap(window->map, window);
 	}
 	else if (keycode == 2)
 	{
-		window->y += 10;
+		window->y += 7;
 		minimap(window->map, window);
 	}
 	else if (keycode == 13)
 	{
-		window->x -= 10;
+		window->x -= 7;
 		minimap(window->map, window);
 	}
 	return (0);
