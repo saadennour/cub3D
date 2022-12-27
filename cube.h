@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/27 15:56:49 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:41:04 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # define BEIGE	0XF0F8FF
 # define SKIN	0XE9967A
 # define RED	0x00FF0000
+# define W		13
+# define A		0
+# define S		1
+# define D		2
 
 typedef struct t_idpaths
 {
@@ -65,6 +69,8 @@ typedef struct t_window
 	t_data	*px;
 	float		x;
 	float		y;
+	double line_x;
+	double line_y;
 }				t_window;
 
 

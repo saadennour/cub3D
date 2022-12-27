@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/27 16:03:59 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:37:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	minimap(char **map, t_window *window)
 	window->img = mlx_new_image(window->mlx,  40 * ft_strlen(map[6]), 40 * line_counter(&map[6]));
 	data.addr = mlx_get_data_addr(window->img, &data.bits_per_pixel, &data.line_length, &data.endian);
 
+	printf("test\n");
 	while (map[i])
 	{
 		j = 0;

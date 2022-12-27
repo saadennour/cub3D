@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2022/12/27 15:50:15 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:18:34 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	line(int x, int y, int new_x, int new_y, t_data *data, int color)
+void	line(int x, int y, double new_x, double new_y, t_data *data, int color)
 {
 	int dy, dx, incrE, incrNE, d,temp_x,temp_y;
 
@@ -51,11 +51,8 @@ void	line(int x, int y, int new_x, int new_y, t_data *data, int color)
 
 void	draw_line(int x, int y, t_data *data, int color, int size)
 {
-	double temp_x;
-	double temp_y;
-	temp_x = x + size*cos(data->rotation_angle);
-	temp_y = y - size*sin(data->rotation_angle);
-	line(x ,y, temp_x, temp_y, data, color);
+	(void)size;
+	line(x ,y, data->line_x, data->line_y, data, color);
 }
 
 // float theta = 0;
