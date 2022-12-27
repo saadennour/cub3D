@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/26 14:02:58 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:03:59 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	minimap(char **map, t_window *window)
 		}
 		i++;
 	}
-	draw_square(window->y, window->x, &data, RED, 10);
+	draw_player(window->y, window->x, &data, RED, 10);
+	draw_circle(200, 300, &data, RED, 100);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
 }

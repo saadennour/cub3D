@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/26 14:03:24 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:56:49 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	double	rotation_speed;
+	double	rotation_angle;
 }				t_data;
 
 typedef struct t_window
@@ -61,8 +63,8 @@ typedef struct t_window
 	char	**map;
 	void	*img;
 	t_data	*px;
-	int		x;
-	int		y;
+	float		x;
+	float		y;
 }				t_window;
 
 
@@ -99,5 +101,7 @@ void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
 void    	draw_square(int x, int y, t_data *data, int color, int size);
 void		find_player(t_window *window, char **map);
+void		draw_circle(int x, int y, t_data *data, int color, int size);
+void   		draw_player(int x, int y, t_data *data, int color, int size);
 
 #endif
