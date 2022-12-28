@@ -6,7 +6,7 @@
 /*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2022/12/28 22:36:56 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2022/12/29 00:25:37 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,45 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // 	} 
 // }
 
+// void	line(double x, double y, double new_x, double new_y, t_data *data, int color)
+// {
+// 	// Calculate "deltas" of the line (difference between two ending points)
+//     double dx = new_x - x;
+//     double dy = new_y - y;
+//     // Calculate the line equation based on deltas
+//     double d = (2.0 * dy) - dx;
+//     double temp_y = y;
+//     // Draw the line based on arguments provided
+//     for (double temp_x = x; temp_x < new_x; temp_x++)
+//     {
+//         // Place pixel on the raster display
+//         my_mlx_pixel_put(data, temp_x, temp_y, color);
+//         if (d >= 0.0)
+//         {
+//             temp_y = temp_y + 1.0;
+//             d = d - 2.0 * dx;
+//         }
+//         d = d + 2.0 * dy;
+//     }
+// }
+
 void	line(double x, double y, double new_x, double new_y, t_data *data, int color)
 {
-	// Calculate "deltas" of the line (difference between two ending points)
-    double dx = new_x - x;
-    double dy = new_y - y;
-    // Calculate the line equation based on deltas
-    double d = (2 * dy) - dx;
-    double temp_y = y;
-    // Draw the line based on arguments provided
-    for (double temp_x = x; temp_x < new_x; temp_x++)
-    {
-        // Place pixel on the raster display
-        my_mlx_pixel_put(data, temp_x, temp_y, color);
-        if (d >= 0)
-        {
-            temp_y = temp_y + 1;
-            d = d - 2 * dx;
-        }
-        d = d + 2 * dy;
-    }
+	double deltaX = new_x - x;
+	double deltaY = new_y - y;
+
+	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+	deltaX /= pixels;
+	deltaY /= pixels;
+	double pixelX = x;
+	double pixelY = y;
+	while (pixels)
+	{
+		my_mlx_pixel_put(data, pixelX, pixelY, color);
+		pixelX += deltaX;
+		pixelY += deltaY;
+		--pixels;
+	}
 }
 
 
