@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/27 18:31:18 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/28 16:50:05 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	minimap(char **map, t_window *window)
 
 	i = 6;
 	window->img = mlx_new_image(window->mlx,  40 * ft_strlen(map[6]), 40 * line_counter(&map[6]));
+	window->px = malloc(sizeof(t_data));
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
 	window->img_size = 40;
 	while (map[i])
@@ -57,6 +58,6 @@ void	minimap(char **map, t_window *window)
 		i++;
 	}
 	window->img_size = 10;
-	draw_square(window->y, window->x, window, RED);
+	draw_player(window->y, window->x, window, RED);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/27 18:31:55 by sfarhan          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:40:01 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <unistd.h>
-# include <mlx.h>
+# include <math.h>
+# include "mlx/mlx.h"
+//# include <mlx.h>
 
 # define BEIGE	0XF0F8FF
 # define SKIN	0XE9967A
 # define RED	0x00FF0000
+# define W		13
+# define A		0
+# define S		1
+# define D		2
 
 typedef struct t_idpaths
 {
@@ -59,9 +65,13 @@ typedef struct t_window
 	void	*win;
 	char	**map;
 	void	*img;
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	int		img_size;
+	double	rotation_speed;
+	double	rotation_angle;
+	double	line_x;
+	double	line_y;
 }				t_window;
 
 
@@ -98,5 +108,6 @@ void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
 void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
+void		draw_player(double x, double y, t_window *window, int color);
 
 #endif
