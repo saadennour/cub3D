@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/26 14:03:24 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:17:31 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct t_config
 }				t_config;
 
 typedef struct	s_data {
-	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -56,13 +55,14 @@ typedef struct	s_data {
 
 typedef struct t_window
 {
+	t_data	*px;
 	void	*mlx;
 	void	*win;
 	char	**map;
 	void	*img;
-	t_data	*px;
 	int		x;
 	int		y;
+	int		img_size;
 }				t_window;
 
 
@@ -97,7 +97,8 @@ int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
-void    	draw_square(int x, int y, t_data *data, int color, int size);
+void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
+void		draw_player(int x, int y, t_window *window, int color);
 
 #endif
