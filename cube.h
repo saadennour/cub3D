@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/29 15:34:52 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:53:57 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ typedef struct t_window
 	void	*win;
 	char	**map;
 	void	*img;
-	double	x;
-	double	y;
+	int		x;
+	int		y;
 	int		img_size;
 	double	rotation_speed;
 	double	rotation_angle;

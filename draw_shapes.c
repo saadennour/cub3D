@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2022/12/29 15:34:07 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/30 21:04:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,73 +20,24 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// void	line(double x, double y, double new_x, double new_y, t_data *data, int color)
-// {
-// 	double dy, dx, incrE, incrNE, d,temp_x,temp_y;
-
-// 	dx = new_x - x;
-// 	dy = new_y - y;
-// 	d = 2 * dy - dx;
-// 	incrE = 2*dy;
-// 	incrNE = 2*(dy - dx);
-// 	temp_x = x;
-// 	temp_y = y;
-// 	my_mlx_pixel_put(data, temp_x, temp_y, color);
-// 	while(temp_x < new_x)
-// 	{
-// 		my_mlx_pixel_put(data, temp_x, temp_y, color);
-// 		if (d <= 0)
-// 		{
-// 			d += incrE;
-// 			temp_x++;
-// 		}
-// 		else
-// 		{
-// 			d += incrNE;
-// 			temp_x++;
-// 			temp_y++;
-// 		}
-// 	} 
-// }
-
-// void	line(double x, double y, double new_x, double new_y, t_data *data, int color)
-// {
-// 	// Calculate "deltas" of the line (difference between two ending points)
-//     double dx = new_x - x;
-//     double dy = new_y - y;
-//     // Calculate the line equation based on deltas
-//     double d = (2.0 * dy) - dx;
-//     double temp_y = y;
-//     // Draw the line based on arguments provided
-//     for (double temp_x = x; temp_x < new_x; temp_x++)
-//     {
-//         // Place pixel on the raster display
-//         my_mlx_pixel_put(data, temp_x, temp_y, color);
-//         if (d >= 0.0)
-//         {
-//             temp_y = temp_y + 1.0;
-//             d = d - 2.0 * dx;
-//         }
-//         d = d + 2.0 * dy;
-//     }
-// }
-
-void	line(double x, double y, double new_x, double new_y, t_data *data, int color)
+void	line(double x, double y, t_window *window, int color)
 {
-	double deltaX = new_x - x;
-	double deltaY = new_y - y;
+	double deltaX = cos(window->rotation_angle);
+	double deltaY = sin(window->rotation_angle);
+	double tmpcos = cos(window->rotation_angle);
+	double tmpsin = sin(window->rotation_angle);
 
-	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
-	deltaX /= pixels;
-	deltaY /= pixels;
-	double pixelX = x;
-	double pixelY = y;
-	while (pixels)
+	//int pixels = (deltaX * deltaX) + (deltaY * deltaY);
+	printf("A line x : %lf   x : %d\n", window->line_x, window->y);
+	printf("A line y : %lf   y : %d\n", window->line_y, window->x);
+	while (tmpcos < 20 && tmpsin < 20)
 	{
-		my_mlx_pixel_put(data, pixelX, pixelY, color);
-		pixelX += deltaX;
-		pixelY += deltaY;
-		--pixels;
+		my_mlx_pixel_put(window->px, x, y, color);
+		x += deltaX;
+		y += deltaY;
+		tmpcos++;
+		tmpsin++;
+		//--pixels;
 	}
 }
 
@@ -95,7 +46,7 @@ void	draw_line(double x, double y, t_window *window, int color)
 {
 	// printf("x: %d\ny: %d\n", x, y);
 	// printf("line x: %lf\nline y: %lf\n", window->line_x, window->line_y);
-	line(x, y, window->line_x, window->line_y, window->px, color);
+	line(x, y, window, color);
 }
 
 void	draw_square(int x, int y, t_window *window, int color)
@@ -122,5 +73,5 @@ void	draw_square(int x, int y, t_window *window, int color)
 void	draw_player(double x, double y, t_window *window, int color)
 {
 	draw_square(x, y, window, color);
-	draw_line(x + (window->img_size / 2), y + ((window->img_size - 1) / 2), window, color);
+	draw_line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
 }
