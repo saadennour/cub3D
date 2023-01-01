@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/30 21:05:52 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:13:43 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	start_game(t_config *config)
 	window.win = mlx_new_window(window.mlx, 40 * ft_strlen(config->data[6]), 40 * line_counter(&config->data[6]), "CUBE3D");
 	window.map = config->data;
 	find_player(&window, config->data);
-	window.rotation_speed = 2* M_PI/ 60;
+	window.rotation_speed = 2* M_PI / 60;
 	window.rotation_angle = 0;
 	window.line_x = window.y + cos(window.rotation_angle) * 20;
 	window.line_y = window.x + sin(window.rotation_angle) * 20;
@@ -43,9 +43,11 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == A)
 	{
-		window->rotation_angle -= 0.1;
-		if (window->rotation_angle <= 0.0)
-			window->rotation_angle += 2.0 * M_PI;
+		window->rotation_angle -= 2* M_PI / 60 ;
+		if (window->rotation_angle < 0.0)
+			window->rotation_angle = 0;
+		if (window->rotation_angle > 2.0 * M_PI)
+			window->rotation_angle = 0;
 		//printf("A rotation angle : %lf\n", window->rotation_angle);
 		window->line_x = window->y + (cos(window->rotation_angle) * 20);
 		window->line_y = window->x + (sin(window->rotation_angle) * 20);
@@ -63,9 +65,11 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == D)
 	{
-		window->rotation_angle += 0.1;
-		if (window->rotation_angle >= 2.0 * M_PI)
-			window->rotation_angle -= 2.0 * M_PI;
+		window->rotation_angle += 2* M_PI / 60;
+		if (window->rotation_angle > 2.0 * M_PI)
+			window->rotation_angle = 0;
+		if (window->rotation_angle < 0.0)
+			window->rotation_angle = 0;
 		//printf("D rotation angle : %lf\n", window->rotation_angle);
 		window->line_x = window->y + (cos(window->rotation_angle) * 20);
 		window->line_y = window->x + (sin(window->rotation_angle) * 20);
@@ -75,8 +79,12 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == W)
 	{
+		
 		window->x +=(sin(window->rotation_angle) * 20);
 		window->y +=(cos(window->rotation_angle) * 20);
+		printf("cos : %lf\n",(cos(window->rotation_angle) * 20));
+		printf("sin : %lf\n",(sin(window->rotation_angle) * 20));
+		printf("rotation angle : %lf\n", window->rotation_angle);
 		window->line_x = window->y + (cos(window->rotation_angle) * 20);
 		window->line_y = window->x + (sin(window->rotation_angle) * 20);
 		minimap(window->map, window);

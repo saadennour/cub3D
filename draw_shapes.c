@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2022/12/30 21:04:28 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:29:16 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	line(double x, double y, t_window *window, int color)
 	double tmpsin = sin(window->rotation_angle);
 
 	//int pixels = (deltaX * deltaX) + (deltaY * deltaY);
-	printf("A line x : %lf   x : %d\n", window->line_x, window->y);
-	printf("A line y : %lf   y : %d\n", window->line_y, window->x);
+	// printf("A line x : %lf   x : %d\n", window->line_x, window->y);
+	// printf("A line y : %lf   y : %d\n", window->line_y, window->x);
 	while (tmpcos < 20 && tmpsin < 20)
 	{
 		my_mlx_pixel_put(window->px, x, y, color);
