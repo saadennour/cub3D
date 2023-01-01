@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 16:40:27 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:15:19 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <mlx.h>
 
+# define PI				3.141592
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
 # define RED			0x00FF0000
@@ -68,6 +69,8 @@ typedef struct t_window
 	void	*img;
 	int		x;
 	int		y;
+	int		wall_x;
+	int		wall_y;
 	int		img_size;
 	double	rotation_speed;
 	double	rotation_angle;
@@ -109,6 +112,7 @@ void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
 void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
+int			find_wall(t_window *window);
 void		draw_player(double x, double y, t_window *window, int color);
 
 #endif

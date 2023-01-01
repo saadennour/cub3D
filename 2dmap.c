@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/31 20:47:20 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/01 17:08:03 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,34 @@ void	find_player(t_window *window, char **map)
 		}
 		x++;
 	}
+}
+
+int	find_wall(t_window *window)
+{
+	int	x;
+	int	y;
+
+	y = 6;
+	window->wall_x = 0;
+	window->wall_y = 0;
+	while (window->map[y])
+	{
+		x = 0;
+		while(window->map[y][x])
+		{
+			if (ft_strchr(window->map[y][x], "1"))
+			{
+				window->wall_x = x * 40 + 15;
+				window->wall_y = (y - 6) * 40 + 15;
+			}
+			if ((window->wall_x == window->x && window->wall_y == window->y)
+				|| (window->wall_x == window->x + 10 && window->wall_y == window->y + 10))
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }
 
 void	minimap(char **map, t_window *window)

@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 16:49:55 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/01 19:10:03 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int	shut(t_window *window)
 	exit (0);
 }
 
+void	round_angles(t_window *window)
+{
+	if (window->rotation_angle == 4.712389)
+		window->rotation_angle = 3 * M_PI / 2;
+}
+
 int	key_hook(int keycode, t_window *window)
 {
 	if (keycode == 53)
@@ -42,21 +48,32 @@ int	key_hook(int keycode, t_window *window)
 	if (keycode == RIGHT_ARROW)
 	{
 		window->rotation_angle += 2 * M_PI / 60;
-		if (window->rotation_angle >= 2.0 * M_PI)
+		if (window->rotation_angle > 2.0 * M_PI)
 			window->rotation_angle -= 2.0 * M_PI;
+		round_angles(window);
 		minimap(window->map, window);
 	}
 	if (keycode == LEFT_ARROW)
 	{
 		window->rotation_angle -= 2 * M_PI / 60;
-		if (window->rotation_angle <= 0.0)
+		if (window->rotation_angle < 0.000000)
 			window->rotation_angle += 2.0 * M_PI;
+		round_angles(window);
 		minimap(window->map, window);	
 	}
 	if (keycode == A)
 	{
-		if (sin(window->rotation_angle) == 0)
+		printf("rotation angle : %f\n", window->rotation_angle);
+		if (sin(window->rotation_angle) == 0.0)
+		{
 			window->x += 5;
+			printf("test\n");
+		}
+		else if (cos(window->rotation_angle) == 0.0)
+		{
+			window->y += 5;
+			printf("test\n");
+		}
 		else
 		{
 			window->x += (sin(window->rotation_angle) * 5);
@@ -66,14 +83,24 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == S)
 	{
+		printf("rotation angle : %f\n", window->rotation_angle);
 		window->x -= (sin(window->rotation_angle) * 5);
 		window->y -= (cos(window->rotation_angle) * 5);
 		minimap(window->map, window);
 	}
 	if (keycode == D)
 	{
-		if (sin(window->rotation_angle) == 0)
+		printf("rotation angle : %f\n", window->rotation_angle);
+		if (sin(window->rotation_angle) == 0.0)
+		{
 			window->x -= 5;
+			printf("test\n");
+		}
+		else if (cos(window->rotation_angle) == 0.0)
+		{
+			window->y -= 5;
+			printf("test\n");
+		}
 		else
 		{
 			window->x -= (sin(window->rotation_angle) * 5);
@@ -83,6 +110,7 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == W)
 	{
+		printf("rotation angle : %f\n", window->rotation_angle);
 		window->x +=(sin(window->rotation_angle) * 5);
 		window->y +=(cos(window->rotation_angle) * 5);
 		minimap(window->map, window);
