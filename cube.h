@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/29 15:53:57 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:40:27 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 # include <math.h>
 # include <mlx.h>
 
-# define BEIGE	0XF0F8FF
-# define SKIN	0XE9967A
-# define RED	0x00FF0000
-# define W		13
-# define A		0
-# define S		1
-# define D		2
+# define BEIGE			0XF0F8FF
+# define SKIN			0XE9967A
+# define RED			0x00FF0000
+# define W				13
+# define A				0
+# define S				1
+# define D				2
+# define LEFT_ARROW		123
+# define RIGHT_ARROW	124
 
 typedef struct t_idpaths
 {

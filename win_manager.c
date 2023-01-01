@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 16:31:38 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:49:55 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int	key_hook(int keycode, t_window *window)
 	if (keycode == 53)
 		shut(window);
 	mlx_destroy_image(window->mlx, window->img);
-	if (keycode == 124)
+	if (keycode == RIGHT_ARROW)
 	{
 		window->rotation_angle += 2 * M_PI / 60;
 		if (window->rotation_angle >= 2.0 * M_PI)
 			window->rotation_angle -= 2.0 * M_PI;
 		minimap(window->map, window);
 	}
-	if (keycode == 123)
+	if (keycode == LEFT_ARROW)
 	{
 		window->rotation_angle -= 2 * M_PI / 60;
 		if (window->rotation_angle <= 0.0)
@@ -55,16 +55,13 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == A)
 	{
-		// if (window->rotation_angle == 0 || window->rotation_angle == M_PI || window->rotation_angle == 2 * M_PI || window->rotation_angle == 3 * (M_PI / 2))
-			window->x -= (sin(window->rotation_angle) + 5);
-		// else
-		// {
-		// 	window->x -= (sin(window->rotation_angle) * 5);
-		// 	window->y -= (cos(window->rotation_angle) * 5);
-		// }
-		// window->rotation_angle -= 0.1;
-		// if (window->rotation_angle <= 0.0)
-		// 	window->rotation_angle += 2.0 * M_PI;
+		if (sin(window->rotation_angle) == 0)
+			window->x += 5;
+		else
+		{
+			window->x += (sin(window->rotation_angle) * 5);
+			window->y -= (cos(window->rotation_angle) * 5);
+		}
 		minimap(window->map, window);
 	}
 	if (keycode == S)
@@ -75,12 +72,13 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == D)
 	{
-		// if (window->rotation_angle == 0 || window->rotation_angle == M_PI || window->rotation_angle == 2 * M_PI || window->rotation_angle == 3 * (M_PI / 2))
-			window->x += (sin(window->rotation_angle) + 5);
-
-		// window->rotation_angle += 0.1;
-		// if (window->rotation_angle >= 2.0 * M_PI)
-		// 	window->rotation_angle -= 2.0 * M_PI;
+		if (sin(window->rotation_angle) == 0)
+			window->x -= 5;
+		else
+		{
+			window->x -= (sin(window->rotation_angle) * 5);
+			window->y += (cos(window->rotation_angle) * 5);
+		}
 		minimap(window->map, window);
 	}
 	if (keycode == W)
