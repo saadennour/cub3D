@@ -1,6 +1,6 @@
 NAME = cub3D
 
-FLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit
 
 SRCS =	main.c	\
 		parsing.c	\
@@ -16,7 +16,7 @@ SRCS =	main.c	\
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-		gcc $(FLAGS) $(SRCS) -o cub3D
+		gcc mlx/libmlx.a $(FLAGS) $(SRCS) -o cub3D
 
 clean :
 		rm -rf $(NAME)
