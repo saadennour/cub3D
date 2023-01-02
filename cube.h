@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 21:48:24 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/02 15:55:34 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-# include "mlx/mlx.h"
+# include <mlx.h>
 
 # define PI				3.141592
 # define BEIGE			0XF0F8FF
@@ -77,6 +77,8 @@ typedef struct t_window
 	double	line_x;
 	double	line_y;
 	int		track_rotation;
+	double	si;
+	double	co;
 }				t_window;
 
 
