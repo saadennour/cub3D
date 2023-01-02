@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 19:10:03 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:39:22 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	shut(t_window *window)
 void	round_angles(t_window *window)
 {
 	if (window->rotation_angle == 4.712389)
+	{
 		window->rotation_angle = 3 * M_PI / 2;
+		printf("round\n");
+	}
 }
 
 int	key_hook(int keycode, t_window *window)
@@ -56,7 +59,7 @@ int	key_hook(int keycode, t_window *window)
 	if (keycode == LEFT_ARROW)
 	{
 		window->rotation_angle -= 2 * M_PI / 60;
-		if (window->rotation_angle < 0.000000)
+		if (window->rotation_angle <= 0)
 			window->rotation_angle += 2.0 * M_PI;
 		round_angles(window);
 		minimap(window->map, window);	
