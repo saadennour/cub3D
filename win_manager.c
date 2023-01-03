@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/02 18:11:42 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/03 21:47:44 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	key_hook(int keycode, t_window *window)
 		window->rotation_angle += 2 * M_PI / 60;
 		if (window->rotation_angle > 2.0 * M_PI)
 		{	window->rotation_angle -= 2.0 * M_PI;
-			printf("enter\n");
+			// printf("enter\n");
 		}
 		minimap(window->map, window);
 	}
@@ -72,7 +72,7 @@ int	key_hook(int keycode, t_window *window)
 		window->rotation_angle -= 2 * M_PI / 60;
 		if (window->rotation_angle < 0)
 		{	window->rotation_angle += 2.0 * M_PI;
-			printf("enter\n");
+			// printf("enter\n");
 		}
 		minimap(window->map, window);	
 	}
@@ -101,7 +101,7 @@ int	key_hook(int keycode, t_window *window)
 		// printf("S cos : %f\n", cos(window->rotation_angle));
 		// printf("S sin : %f\n", sin(window->rotation_angle));
 		
-		printf("tracker : %d\n", window->track_rotation);
+		// printf("tracker : %d\n", window->track_rotation);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			window->y += 5;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
@@ -136,25 +136,28 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == W)
 	{
-		window->si = (sin(window->rotation_angle) * 5);
-		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
-		printf("tracker : %d\n", window->track_rotation);
-		printf("W sin : %f\n", window->si);
-		printf("W cos : %f\n", window->co);
-		//30 and -30 y--; www
-		if (window->track_rotation == 30 || window->track_rotation == -30)
-			window->y -= 5;
-		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			window->x -= 5;
-		else if (window->track_rotation == 45 || window->track_rotation == -45)
-			window->x += 5;
-		else if (window->track_rotation == 0)
-			window->y += 5;
-		else
+		if (find_wall(window) == 1)
 		{
-			window->x += window->si;
-			window->y += window->co;
+			window->si = (sin(window->rotation_angle) * 5);
+			window->co = (cos(window->rotation_angle) * 5);
+			round_angles(window);
+			// printf("tracker : %d\n", window->track_rotation);
+			// printf("W sin : %f\n", window->si);
+			// printf("W cos : %f\n", window->co);
+			//30 and -30 y--; www
+			if (window->track_rotation == 30 || window->track_rotation == -30)
+				window->y -= 5;
+			else if (window->track_rotation == 15 || window->track_rotation == -15)
+				window->x -= 5;
+			else if (window->track_rotation == 45 || window->track_rotation == -45)
+				window->x += 5;
+			else if (window->track_rotation == 0)
+				window->y += 5;
+			else
+			{
+				window->x += window->si;
+				window->y += window->co;
+			}
 		}
 		minimap(window->map, window);
 	}

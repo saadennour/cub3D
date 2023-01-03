@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/01 17:08:03 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/03 21:58:53 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	find_wall(t_window *window)
 {
 	int	x;
 	int	y;
+	int	p = 0;
 
 	y = 6;
 	window->wall_x = 0;
@@ -49,17 +50,27 @@ int	find_wall(t_window *window)
 		{
 			if (ft_strchr(window->map[y][x], "1"))
 			{
-				window->wall_x = x * 40 + 15;
-				window->wall_y = (y - 6) * 40 + 15;
+				window->wall_x = x * 40;
+				window->wall_y = (y - 6) * 40;
 			}
-			if ((window->wall_x == window->x && window->wall_y == window->y)
-				|| (window->wall_x == window->x + 10 && window->wall_y == window->y + 10))
-				return (1);
+			if ((window->wall_x <= window->y && window->wall_x + 40 >= window->y)
+				&& (window->wall_y <= window->x && window->wall_y + 40 >= window->x))
+			{
+				printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
+				return (0);
+			}
+			if (p == 1 && window->map[y][x] == '1')
+			{
+				p = 2;
+				printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n\n\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
+			}
+			if (window->map[y][x] == 'N')
+				p = 1;
 			x++;
 		}
 		y++;
 	}
-	return (0);
+	return (1);
 }
 
 void	minimap(char **map, t_window *window)
