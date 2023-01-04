@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/03 21:58:53 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/04 20:19:00 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,43 +34,44 @@ void	find_player(t_window *window, char **map)
 	}
 }
 
-int	find_wall(t_window *window)
+int	find_wall(t_window *window, int i, int j)
 {
 	int	x;
 	int	y;
-	int	p = 0;
 
-	y = 6;
-	window->wall_x = 0;
-	window->wall_y = 0;
-	while (window->map[y])
-	{
-		x = 0;
-		while(window->map[y][x])
-		{
-			if (ft_strchr(window->map[y][x], "1"))
-			{
-				window->wall_x = x * 40;
-				window->wall_y = (y - 6) * 40;
-			}
-			if ((window->wall_x <= window->y && window->wall_x + 40 >= window->y)
-				&& (window->wall_y <= window->x && window->wall_y + 40 >= window->x))
-			{
-				printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
-				return (0);
-			}
-			if (p == 1 && window->map[y][x] == '1')
-			{
-				p = 2;
-				printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n\n\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
-			}
-			if (window->map[y][x] == 'N')
-				p = 1;
-			x++;
-		}
-		y++;
-	}
-	return (1);
+	x = i / 40;
+	y = j / 40;
+	
+	printf ("x : %d | y : %d | char : %c\n", i / 40 + 6, j / 40, window->map[x + 6][y]);
+	if (window->map[x + 6][y] == '1')
+		return (0);
+	else
+		return (1);
+	// x = 6;
+	// window->wall_x = 0;
+	// window->wall_y = 0;
+	// while (window->map[x])
+	// {
+	// 	y = 0;
+	// 	while(window->map[x][y])
+	// 	{
+	// 		if (ft_strchr(window->map[x][y], "1"))
+	// 		{
+	// 			window->wall_y = y * 40;
+	// 			window->wall_x = (x - 6) * 40;
+	// 		}
+	// 		if ((window->wall_x <= window->x && window->wall_x + 40 >= window->x)
+	// 			&& (window->wall_y <= window->y && window->wall_y + 40 >= window->y))                                                                   
+	// 		{
+	// 			printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
+	// 			return (0);
+	// 		}
+	// 		y++;
+	// 	}
+	// 	x++;
+	// }
+	
+	return (0);
 }
 
 void	minimap(char **map, t_window *window)

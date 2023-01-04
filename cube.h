@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/02 15:55:34 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/04 20:03:33 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void		start_game(t_config *config);
 void		minimap(char **map, t_window *window);
 void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
-int			find_wall(t_window *window);
+int			find_wall(t_window *window, int i, int j);
 void		draw_player(double x, double y, t_window *window, int color);
 
 #endif
