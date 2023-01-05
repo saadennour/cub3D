@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/05 13:57:12 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/05 21:11:37 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@ void	find_player(t_window *window, char **map)
 		{
 			if (ft_strchr(map[x][y], "NSWE"))
 			{
+				if (map[x][y] == 'N')
+				{
+					window->rotation_angle = -PI / 2;
+					window->track_rotation = 15;
+				}
+				else if (map[x][y] == 'S')
+				{
+					window->rotation_angle = PI / 2;
+					window->track_rotation = -15;
+				}
+				else if (map[x][y] == 'W')
+				{
+					window->rotation_angle = PI;
+					window->track_rotation = 30;
+				}
 				window->x = (x - 6) * 40 + 15;
 				window->y = y * 40 + 15;
 			}
