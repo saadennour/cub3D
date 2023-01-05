@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/04 20:19:00 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/05 13:57:12 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,13 @@ int	find_wall(t_window *window, int i, int j)
 	int	x;
 	int	y;
 
-	x = i / 40;
-	y = j / 40;
-	
-	printf ("x : %d | y : %d | char : %c\n", i / 40 + 6, j / 40, window->map[x + 6][y]);
-	if (window->map[x + 6][y] == '1')
+	x = (i + 5) / 40 + 6;
+	y = (j + 5) / 40;
+	printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
+	if (window->map[x][y] == '1')
 		return (0);
 	else
 		return (1);
-	// x = 6;
-	// window->wall_x = 0;
-	// window->wall_y = 0;
-	// while (window->map[x])
-	// {
-	// 	y = 0;
-	// 	while(window->map[x][y])
-	// 	{
-	// 		if (ft_strchr(window->map[x][y], "1"))
-	// 		{
-	// 			window->wall_y = y * 40;
-	// 			window->wall_x = (x - 6) * 40;
-	// 		}
-	// 		if ((window->wall_x <= window->x && window->wall_x + 40 >= window->x)
-	// 			&& (window->wall_y <= window->y && window->wall_y + 40 >= window->y))                                                                   
-	// 		{
-	// 			printf ("wall_x : %d | %d\nwall_y : %d | %d\nx && y : %d | %d\n", window->wall_x, window->x, window->wall_y, window->y, y, x);
-	// 			return (0);
-	// 		}
-	// 		y++;
-	// 	}
-	// 	x++;
-	// }
-	
 	return (0);
 }
 

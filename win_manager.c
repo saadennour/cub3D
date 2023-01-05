@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/04 20:12:14 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/04 23:05:13 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
-			x += 5;
+			x += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
-			y -= 5;
+			y -= 4;
 		else
 		{
 			x -= window->co;
@@ -104,13 +104,13 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y += 5;
+			y += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x += 5;
+			x += 4;
 		else if (window->track_rotation == 45 || window->track_rotation == -45)
-			x -= 5;
+			x -= 4;
 		else if (window->track_rotation == 0)
-			y -= 5;
+			y -= 4;
 		else
 		{
 			x -= window->si;
@@ -129,9 +129,9 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
-			x -= 5;
+			x -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
-			y += 5;
+			y += 4;
 		else
 		{
 			x += window->co;
@@ -150,13 +150,13 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y -= 5;
+			y -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x -= 5;
+			x -= 4;
 		else if (window->track_rotation == 45 || window->track_rotation == -45)
-			x += 5;
+			x += 4;
 		else if (window->track_rotation == 0)
-			y += 5;
+			y += 4;
 		else
 		{
 			x += window->si;
