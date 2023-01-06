@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/05 21:11:37 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/06 19:05:33 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	find_wall(t_window *window, int i, int j)
 
 	x = (i + 5) / 40 + 6;
 	y = (j + 5) / 40;
-	printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
+	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
 	if (window->map[x][y] == '1')
 		return (0);
 	else

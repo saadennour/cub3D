@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/05 20:57:07 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/06 18:15:44 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-# include "minilibx/mlx.h"
+# include <mlx.h>
 
 # define PI				3.141592
 # define BEIGE			0XF0F8FF

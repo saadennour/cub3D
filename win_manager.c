@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/05 21:19:57 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/06 19:09:44 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	start_game(t_config *config)
 	window.map = config->data;
 	window.rotation_speed = 2* M_PI / 60;
 	window.rotation_angle = 0;
-	find_player(&window, config->data);
 	window.track_rotation = 0;
+	find_player(&window, config->data);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);
@@ -59,8 +59,8 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == RIGHT_ARROW)
 	{
-		window->track_rotation++;
-		if (window->track_rotation >= 60)
+		window->track_rotation--;
+		if (window->track_rotation <= -60)
 			window->track_rotation = 0;
 		window->rotation_angle += 2 * M_PI / 60;
 		if (window->rotation_angle > 2.0 * M_PI)
@@ -69,8 +69,8 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == LEFT_ARROW)
 	{
-		window->track_rotation--;
-		if (window->track_rotation <= -60)
+		window->track_rotation++;
+		if (window->track_rotation >= 60)
 			window->track_rotation = 0;
 		window->rotation_angle -= 2 * M_PI / 60;
 		if (window->rotation_angle < 0)
@@ -106,9 +106,9 @@ int	key_hook(int keycode, t_window *window)
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x += 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -45)
 			x -= 4;
+		else if (window->track_rotation == 45 || window->track_rotation == -45)
+			x += 4;
 		else if (window->track_rotation == 0)
 			y -= 4;
 		else
@@ -146,15 +146,16 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == W)
 	{
+		printf("rotation : %d\n", window->track_rotation);
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x -= 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -45)
 			x += 4;
+		else if (window->track_rotation == 45 || window->track_rotation == -45)
+			x -= 4;
 		else if (window->track_rotation == 0)
 			y += 4;
 		else
