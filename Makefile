@@ -12,6 +12,7 @@ SRCS =	main.c	\
 		win_manager.c	\
 		2dmap.c	\
 		draw_shapes.c \
+		raycasting.c \
 
 all : $(NAME)
 

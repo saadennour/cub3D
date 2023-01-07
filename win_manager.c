@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/06 19:09:44 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:36:01 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	key_hook(int keycode, t_window *window)
 	{
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
+	//	round_angles(window);
 		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
 			x += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
@@ -102,7 +102,7 @@ int	key_hook(int keycode, t_window *window)
 	{
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
+		//round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
@@ -127,7 +127,7 @@ int	key_hook(int keycode, t_window *window)
 	{
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
+		//round_angles(window);
 		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
 			x -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
@@ -149,7 +149,7 @@ int	key_hook(int keycode, t_window *window)
 		printf("rotation : %d\n", window->track_rotation);
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
+		//round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)

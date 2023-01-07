@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/06 19:05:33 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:19:09 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ void	find_player(t_window *window, char **map)
 			{
 				if (map[x][y] == 'N')
 				{
-					window->rotation_angle = -PI / 2;
+					window->rotation_angle = -M_PI / 2;
 					window->track_rotation = 15;
 				}
 				else if (map[x][y] == 'S')
 				{
-					window->rotation_angle = PI / 2;
+					window->rotation_angle = M_PI / 2;
 					window->track_rotation = -15;
 				}
 				else if (map[x][y] == 'W')
 				{
-					window->rotation_angle = PI;
+					window->rotation_angle = M_PI;
 					window->track_rotation = 30;
 				}
 				window->x = (x - 6) * 40 + 15;

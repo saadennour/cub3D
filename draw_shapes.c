@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/01 17:21:26 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:19:52 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,8 @@ void	line(double x, double y, t_window *window, int color)
 {
 	double deltaX = cos(window->rotation_angle);
 	double deltaY = sin(window->rotation_angle);
-	double tmpcos = cos(window->rotation_angle);
-	double tmpsin = sin(window->rotation_angle);
-
-	//int pixels = (deltaX * deltaX) + (deltaY * deltaY);
-	// printf("A line x : %lf   x : %d\n", window->rotation_angle, window->y);
-	// printf("A line y : %lf   y : %d\n", window->rotation_angle, window->x);
+	double tmpcos = deltaX;
+	double tmpsin = deltaY;
 	while (tmpcos < 20 && tmpsin < 20)
 	{
 		my_mlx_pixel_put(window->px, x, y, color);
@@ -37,16 +33,7 @@ void	line(double x, double y, t_window *window, int color)
 		y += deltaY;
 		tmpcos++;
 		tmpsin++;
-		//--pixels;
 	}
-}
-
-
-void	draw_line(double x, double y, t_window *window, int color)
-{
-	// printf("x: %d\ny: %d\n", x, y);
-	// printf("line x: %lf\nline y: %lf\n", window->line_x, window->line_y);
-	line(x, y, window, color);
 }
 
 void	draw_square(int x, int y, t_window *window, int color)
@@ -72,6 +59,7 @@ void	draw_square(int x, int y, t_window *window, int color)
 
 void	draw_player(double x, double y, t_window *window, int color)
 {
+	//line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
+	drawing_rays(window);
 	draw_square(x, y, window, color);
-	draw_line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
 }

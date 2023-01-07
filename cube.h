@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/06 18:15:44 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:07:01 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # include <math.h>
 # include <mlx.h>
 
-# define PI				3.141592
+# define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
-# define RED			0x00FF0000
+# define RED			0X00FF0000
+# define YELLOW			0XFDDA0D
 # define W				13
 # define A				0
 # define S				1
@@ -81,7 +82,7 @@ typedef struct t_window
 	double	co;
 }				t_window;
 
-
+void		line(double x, double y, t_window *window, int color);
 void		check_extension(char *filename);
 t_config	get_config(int fd);
 char		*get_next_line(int fd);
@@ -117,5 +118,7 @@ void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
 int			find_wall(t_window *window, int i, int j);
 void		draw_player(double x, double y, t_window *window, int color);
+void		drawing_rays(t_window *window);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
