@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/07 15:36:01 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/07 20:12:00 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int	key_hook(int keycode, t_window *window)
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x -= 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -45)
 			x += 4;
+		else if (window->track_rotation == 45 || window->track_rotation == -45)
+			x -= 4;
 		else if (window->track_rotation == 0)
 			y -= 4;
 		else
@@ -153,9 +153,9 @@ int	key_hook(int keycode, t_window *window)
 		if (window->track_rotation == 30 || window->track_rotation == -30)
 			y -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -15)
-			x += 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -45)
 			x -= 4;
+		else if (window->track_rotation == 45 || window->track_rotation == -45)
+			x += 4;
 		else if (window->track_rotation == 0)
 			y += 4;
 		else
