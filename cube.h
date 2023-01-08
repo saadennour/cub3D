@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/07 16:07:01 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:31:43 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include "mlx/mlx.h"
 
 # define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
@@ -82,7 +83,6 @@ typedef struct t_window
 	double	co;
 }				t_window;
 
-void		line(double x, double y, t_window *window, int color);
 void		check_extension(char *filename);
 t_config	get_config(int fd);
 char		*get_next_line(int fd);
@@ -112,13 +112,17 @@ void		free_2darray(char **str);
 int			shut(t_window *window);
 int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
-void		start_game(t_config *config);
-void		minimap(char **map, t_window *window);
-void		draw_square(int x, int y, t_window *window, int color);
 void		find_player(t_window *window, char **map);
 int			find_wall(t_window *window, int i, int j);
+
+// DRAWING THE MAP AND ITS COMPONENTS
+void		start_game(t_config *config);
+void		draw_square(int x, int y, t_window *window, int color);
+void		minimap(char **map, t_window *window);
 void		draw_player(double x, double y, t_window *window, int color);
 void		drawing_rays(t_window *window);
+void		line(double x, double y, t_window *window, int color);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		first_horizental_step(t_window *window, double angle);
 
 #endif

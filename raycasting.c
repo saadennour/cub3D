@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/07 16:20:16 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/08 19:35:12 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,52 @@ void	signle_ray(double x, double y, double angle, t_window *window, int color)
 		tmpcos++;
 		tmpsin++;
 	}
+}
+
+void draw_line(t_window *window, int x, int y, int endX, int endY)
+{
+	double deltaX = endX - x;
+	double deltaY = endY - y;
+	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+
+	deltaX /= pixels;
+	deltaY /= pixels;
+	double pixelX = x;
+	double pixelY = y;
+	while (pixels)
+	{
+		my_mlx_pixel_put(window->px, pixelX, pixelY, YELLOW);
+		pixelX += deltaX;
+		pixelY += deltaY;
+		--pixels;
+	}
+}
+
+void	first_horizental_step(t_window *window, double angle)
+{
+	double	first_y;
+	double	first_x;
+	double	tempx;
+	double	tempy;
+	double	xstep;
+	double	ystep;
+	
+	first_y = floor(window->x / 40) * 40;
+	first_x = window->y + (window->x - first_y) / tan(angle);
+	ystep = 40;
+	xstep = ystep / tan(angle);
+	tempx = window->y;
+	tempy = window->x;
+	printf("test\n");
+	while (find_wall(window, first_y - 5, first_x - 5) == 1)
+	{
+		draw_line(window, tempx, tempy, first_x, first_y);
+		tempx = first_x;
+		tempy = first_y;
+		first_x += xstep;
+		first_y -= ystep;
+	}
+	
 }
 
 void    drawing_rays(t_window *window)
