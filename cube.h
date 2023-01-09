@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/08 17:31:43 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/09 12:41:51 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-//# include <mlx.h>
-# include "mlx/mlx.h"
+# include <mlx.h>
+//# include "mlx/mlx.h"
 
 # define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
