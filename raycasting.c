@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/10 16:57:45 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:53:48 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,16 @@ void	first_horizental_step(t_window *window, double angle)
 	double	ystep;
 	
 	first_y = floor(window->x / 40) * 40;
-	// printf("test1\n");
+	if ((tan(angle) < 0.1 && tan(angle) > 0) || (tan(angle) > -0.1 && tan(angle) < 0))
+		return ;
 	first_x = window->y + (window->x - first_y) / tan(angle);
 	ystep = 40;
 	xstep = ystep / tan(angle);
 	tempx = window->y + (window->img_size / 2);
 	tempy = window->x + (window->img_size / 2);
-	printf("xstep : %f  || firstx : %f\n", xstep, first_x);
-	for (int i = 0; i < 2; i++)
+	//printf("xstep : %f  || firstx : %f\n", xstep, first_x);
+	printf("tan : %f\n", tan(angle));
+	for (int i = 0; i < 1; i++)
 	{
 		draw_line(window, tempx, tempy, first_x, first_y, angle);
 	 	tempx = first_x;
@@ -112,13 +114,17 @@ void    drawing_rays(t_window *window)
 	start = window->rotation_angle - (FOV / 2);
 	end = window->rotation_angle + (FOV / 2);
 	step = 2 * M_PI / 180;
-	while (start < end)
-	{
-		check_direction(window, start);
-		if (start >= 3.14 && start <= 3.15)
-			start += step;
-		first_horizental_step(window, start);
-		start += step;
+	// while (start < end)
+	// {
+	// 	check_direction(window, start);
+	// 	if (start >= 3.14 && start <= 3.15)
+	// 		start += step;
+	// 	first_horizental_step(window, start);
+	// 	start += step;
 
-	}
+	// }
+		check_direction(window, start);
+		first_horizental_step(window, start);
+		check_direction(window, end);
+		first_horizental_step(window, end);
 }
