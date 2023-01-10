@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/09 12:41:51 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:55:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ typedef struct t_window
 	int		track_rotation;
 	double	si;
 	double	co;
+	int		xdirection;
+	int		ydirection;
 }				t_window;
 
 void		check_extension(char *filename);
