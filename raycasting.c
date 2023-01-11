@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/11 15:51:14 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:28:13 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,58 +76,58 @@ void	check_direction(t_window *window, double angle)
 	}
 }
 
-void	first_horizental_step(t_window *window, double angle)
-{
-	double	first_y;
-	double	first_x;
-	double	tempx;
-	double	tempy;
-	double	xstep;
-	double	ystep;
+// void	first_horizental_step(t_window *window, double angle)
+// {
+// 	double	first_y;
+// 	double	first_x;
+// 	double	tempx;
+// 	double	tempy;
+// 	double	xstep;
+// 	double	ystep;
 	
-	first_y = floor(window->x / 40) * 40;
-	if ((tan(angle) < 0.1 && tan(angle) > 0) || (tan(angle) > -0.1 && tan(angle) < 0))
-		return ;
-	first_x = window->y + (window->x - first_y) / tan(angle);
-	ystep = 40;
-	xstep = ystep / tan(angle);
-	tempx = window->y;
-	tempy = window->x;
-	printf("y : %d  || firstx : %f\n", window->y, first_x);
-	printf("rotation angle : %f\n", window->rotation_angle);
-	//printf("tan : %f\n", tan(angle));
-	for (int i = 0; i < 4; i++)
-	{
-		if (first_x || first_y > windo)
-		draw_line(window, tempx, tempy, first_x, first_y, angle);
-	 	tempx = first_x;
-	 	tempy = first_y;
-	 	first_x += xstep;
-	 	first_y -= ystep;
-	}
-	//printf("xdir : %d  || ydir : %d\n", window->xdirection, window->ydirection);
-}
+// 	first_y = floor(window->x / 40) * 40;
+// 	if ((tan(angle) < 0.1 && tan(angle) > 0) || (tan(angle) > -0.1 && tan(angle) < 0))
+// 		return ;
+// 	first_x = window->y + (window->x - first_y) / tan(angle);
+// 	ystep = 40;
+// 	xstep = ystep / tan(angle);
+// 	tempx = window->y;
+// 	tempy = window->x;
+// 	printf("y : %d  || firstx : %f\n", window->y, first_x);
+// 	printf("rotation angle : %f\n", window->rotation_angle);
+// 	//printf("tan : %f\n", tan(angle));
+// 	for (int i = 0; i < 4; i++)
+// 	{
+// 		if (first_x || first_y > windo)
+// 		draw_line(window, tempx, tempy, first_x, first_y, angle);
+// 	 	tempx = first_x;
+// 	 	tempy = first_y;
+// 	 	first_x += xstep;
+// 	 	first_y -= ystep;
+// 	}
+// 	//printf("xdir : %d  || ydir : %d\n", window->xdirection, window->ydirection);
+// }
 
-void    drawing_rays(t_window *window)
-{
-	double	start;
-	double	end;
-	double	step;
+// void    drawing_rays(t_window *window)
+// {
+// 	double	start;
+// 	double	end;
+// 	double	step;
 	
-	start = window->rotation_angle - (FOV / 2);
-	end = window->rotation_angle + (FOV / 2);
-	step = 2 * M_PI / 180;
-	// while (start < end)
-	// {
-	// 	check_direction(window, start);
-	// 	if (start >= 3.14 && start <= 3.15)
-	// 		start += step;
-	// 	first_horizental_step(window, start);
-	// 	start += step;
+// 	start = window->rotation_angle - (FOV / 2);
+// 	end = window->rotation_angle + (FOV / 2);
+// 	step = 2 * M_PI / 180;
+// 	// while (start < end)
+// 	// {
+// 	// 	check_direction(window, start);
+// 	// 	if (start >= 3.14 && start <= 3.15)
+// 	// 		start += step;
+// 	// 	first_horizental_step(window, start);
+// 	// 	start += step;
 
-	// }
-		check_direction(window, start);
-		first_horizental_step(window, start);
-		//check_direction(window, end);
-		//first_horizental_step(window, end);
-}
+// 	// }
+// 		check_direction(window, start);
+// 		first_horizental_step(window, start);
+// 		//check_direction(window, end);
+// 		//first_horizental_step(window, end);
+// }

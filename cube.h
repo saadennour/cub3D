@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/10 16:55:56 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:25:34 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
-//# include "mlx/mlx.h"
+// # include <mlx.h>
+# include "mlx/mlx.h"
 
 # define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
@@ -83,6 +83,8 @@ typedef struct t_window
 	double	co;
 	int		xdirection;
 	int		ydirection;
+	int		height;
+	int		width;
 }				t_window;
 
 void		check_extension(char *filename);
@@ -116,6 +118,7 @@ int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		find_player(t_window *window, char **map);
 int			find_wall(t_window *window, int i, int j);
+int			tallest_line(char **map);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		start_game(t_config *config);

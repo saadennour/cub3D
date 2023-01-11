@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/10 18:46:18 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:24:47 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	start_game(t_config *config)
 	t_window	window;
 	
 	window.mlx = mlx_init();
-	window.win = mlx_new_window(window.mlx, 40 * ft_strlen(config->data[6]), 40 * line_counter(&config->data[6]), "CUBE3D");
+	window.height = 40 * line_counter(&config->data[6]);
+	window.width = 40 * tallest_line(&config->data[6]);
+	window.win = mlx_new_window(window.mlx, window.width ,window.height, "CUBE3D");
 	window.map = config->data;
 	window.rotation_speed = 2* M_PI / 60;
 	window.rotation_angle = 0;

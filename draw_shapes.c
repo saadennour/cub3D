@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/10 16:58:06 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:28:23 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	draw_player(double x, double y, t_window *window, int color)
 {
 	//line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
 	//drawing_rays(window);
-	double start;
+	// double start;
 
-	start = window->rotation_angle - (FOV / 2);
-	drawing_rays(window);
+	// start = window->rotation_angle - (FOV / 2);
+	// drawing_rays(window);
 	draw_square(x, y, window, color);
 }
