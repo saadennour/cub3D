@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/10 18:59:02 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:51:14 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,27 @@ void	first_horizental_step(t_window *window, double angle)
 	double	xstep;
 	double	ystep;
 	
-	first_y = floor(window->x / 40) * 40 * window->ydirection;
+	first_y = floor(window->x / 40) * 40;
 	if ((tan(angle) < 0.1 && tan(angle) > 0) || (tan(angle) > -0.1 && tan(angle) < 0))
 		return ;
-	first_x = (window->y + (window->x - first_y) / tan(angle));
+	first_x = window->y + (window->x - first_y) / tan(angle);
 	ystep = 40;
 	xstep = ystep / tan(angle);
-	tempx = window->y + (window->img_size / 2);
-	tempy = window->x + (window->img_size / 2);
-	//printf("xstep : %f  || firstx : %f\n", xstep, first_x);
+	tempx = window->y;
+	tempy = window->x;
+	printf("y : %d  || firstx : %f\n", window->y, first_x);
 	printf("rotation angle : %f\n", window->rotation_angle);
 	//printf("tan : %f\n", tan(angle));
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 4; i++)
 	{
+		if (first_x || first_y > windo)
 		draw_line(window, tempx, tempy, first_x, first_y, angle);
 	 	tempx = first_x;
 	 	tempy = first_y;
-	 	first_x += xstep * window->xdirection;
-	 	first_y += ystep * window->ydirection;
+	 	first_x += xstep;
+	 	first_y -= ystep;
 	}
-	printf("xdir : %d  || ydir : %d\n", window->xdirection, window->ydirection);
+	//printf("xdir : %d  || ydir : %d\n", window->xdirection, window->ydirection);
 }
 
 void    drawing_rays(t_window *window)
