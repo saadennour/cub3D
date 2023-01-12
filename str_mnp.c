@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_mnp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:56 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/15 20:03:57 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:18:38 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,4 +180,20 @@ char	*ft_strdup(const char *src)
 	}
 	p[j] = '\0';
 	return (p);
+}
+
+int	tallest_line(char **map)
+{
+	int	i;
+	int	len;
+
+	i = 6;
+	len = 0;
+	while (map[i])
+	{
+		if (len < ft_strlen(map[i]))
+			len = ft_strlen(map[i]);
+		i++;
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/10 10:50:26 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/12 13:50:07 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-//# include <mlx.h>
+// # include <mlx.h>
 # include "mlx/mlx.h"
 
 # define FOV			60 * M_PI / 180
@@ -81,6 +81,10 @@ typedef struct t_window
 	int		track_rotation;
 	double	si;
 	double	co;
+	int		xdirection;
+	int		ydirection;
+	int		height;
+	int		width;
 }				t_window;
 
 void		check_extension(char *filename);
@@ -114,6 +118,7 @@ int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		find_player(t_window *window, char **map);
 int			find_wall(t_window *window, int i, int j);
+int			tallest_line(char **map);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		start_game(t_config *config);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/07 16:19:09 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:25:25 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	find_player(t_window *window, char **map)
 			{
 				if (map[x][y] == 'N')
 				{
-					window->rotation_angle = -M_PI / 2;
+					window->rotation_angle = 3 * M_PI / 2;
 					window->track_rotation = 15;
 				}
 				else if (map[x][y] == 'S')
@@ -70,7 +70,7 @@ void	minimap(char **map, t_window *window)
 	int	j;
 
 	i = 6;
-	window->img = mlx_new_image(window->mlx,  40 * ft_strlen(map[6]), 40 * line_counter(&map[6]));
+	window->img = mlx_new_image(window->mlx, window->width, window->height);
 	window->px = malloc(sizeof(t_data));
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
 	window->img_size = 40;
