@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/11 16:24:47 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/13 17:41:20 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	key_hook(int keycode, t_window *window)
 		window->track_rotation--;
 		if (window->track_rotation <= -60)
 			window->track_rotation = 0;
-		window->rotation_angle += 2 * M_PI / 60;
-		if (window->rotation_angle > 2.0 * M_PI)
-			window->rotation_angle -= 2.0 * M_PI;
+		window->rotation_angle -= 2 * M_PI / 180;
+		if (window->rotation_angle <= 0.0)
+			window->rotation_angle += 2.0 * M_PI;
 		minimap(window->map, window);
 	}
 	if (keycode == LEFT_ARROW)
@@ -74,9 +74,9 @@ int	key_hook(int keycode, t_window *window)
 		window->track_rotation++;
 		if (window->track_rotation >= 60)
 			window->track_rotation = 0;
-		window->rotation_angle -= 2 * M_PI / 60;
-		if (window->rotation_angle < 0)
-			window->rotation_angle += 2.0 * M_PI;
+		window->rotation_angle += 2 * M_PI / 180;
+		if (window->rotation_angle >= 2.0 * M_PI)
+			window->rotation_angle -= 2.0 * M_PI;
 		minimap(window->map, window);	
 	}
 	if (keycode == A)
@@ -106,13 +106,13 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y += 4;
+			y -= 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -45)
 			x += 4;
 		else if (window->track_rotation == 45 || window->track_rotation == -15)
 			x -= 4;
 		else if (window->track_rotation == 0)
-			y -= 4;
+			y += 4;
 		else
 		{
 			x -= window->si;
@@ -153,13 +153,13 @@ int	key_hook(int keycode, t_window *window)
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
 		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y -= 4;
+			y += 4;
 		else if (window->track_rotation == 15 || window->track_rotation == -45)
 			x -= 4;
 		else if (window->track_rotation == 45 || window->track_rotation == -15)
 			x += 4;
 		else if (window->track_rotation == 0)
-			y += 4;
+			y -= 4;
 		else
 		{
 			x += window->si;

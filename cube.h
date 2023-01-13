@@ -6,7 +6,7 @@
 /*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/12 13:50:07 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/13 17:10:54 by anass_elaou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,20 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_rays
+{
+	double	first_y;
+	double	first_x;
+	double	tempx;
+	double	tempy;
+	double	xstep;
+	double	ystep;
+	double	start;
+	double	end;
+}				t_rays;
 typedef struct t_window
 {
+	t_rays	ray;
 	t_data	*px;
 	void	*mlx;
 	void	*win;
