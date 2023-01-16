@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/13 17:41:20 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/16 13:06:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	key_hook(int keycode, t_window *window)
 		else
 		{
 			x -= window->si;
-			y -= window->co;
+			y += window->co;
 		}
 		if (find_wall(window, x, y) == 1)
 		{
@@ -163,7 +163,7 @@ int	key_hook(int keycode, t_window *window)
 		else
 		{
 			x += window->si;
-			y += window->co;
+			y -= window->co;
 		}
 		if (find_wall(window, x, y) == 1)
 		{

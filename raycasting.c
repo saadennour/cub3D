@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anass_elaoufi <anass_elaoufi@student.42    +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/13 18:55:20 by anass_elaou      ###   ########.fr       */
+/*   Updated: 2023/01/16 14:51:42 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,22 @@ int	facing_down(t_window *window, double angle)
 	return (0);
 }
 
-int	facing_right(double angle)
+int	facing_right(t_window *window, double angle)
 {
+	window->xdirection = 1;
 	if (angle > M_PI / 2 && angle < 1.5 * M_PI)
 		return (1);
+	window->xdirection = -1;
 	return (0);
 }
 
 void	init_ray(t_window *window, double angle)
 {
-	if ((tan(angle) < 0.1 && tan(angle) > 0) || (tan(angle) > -0.1 && tan(angle) < 0))
- 		window->ray.start = 2 * M_PI / 180;
-	window->ray.first_y = floor(window->x / 40) * 40;
+	(void)angle;
+	window->ray.fh_y = floor(window->x / 40) * 40;
 	if (facing_down(window, window->ray.start) == 1)
-		window->ray.first_y += 40;
-	window->ray.first_x = window->y + (window->x - window->ray.first_y) / tan(window->ray.start);
+		window->ray.fh_y += 40;
+	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
 }
 
 void	first_horizental_step(t_window *window, double angle)
@@ -111,31 +112,20 @@ void	first_horizental_step(t_window *window, double angle)
 	double	xstep;
 	double	ystep;
 	
-	// first_y = floor(window->x / 40) * 40;
-	// if (facing_down(window, angle) == 1)
-	// 	first_y += 40;
-	printf("ray facing down : %d || ray facing right : %d\n", facing_down(window, window->ray.start), facing_right(window->ray.start));
-	// first_x = window->y + (window->x - first_y) / tan(angle);
 	ystep = 40 * window->ydirection;
 	xstep = ystep / tan(angle);
-	if ((xstep < 0 && facing_right(angle)) || (xstep > 0 && !facing_right(angle)))
+	if ((xstep < 0 && facing_right(window, angle)) || (xstep > 0 && !facing_right(window, angle)))
 		xstep *= -1;
 	tempx = window->y;
 	tempy = window->x;
-	printf("firstx : %f\n", window->ray.first_x);
-	printf("start : %f || rotation angle : %f\n", window->ray.start, window->rotation_angle);
-	
-	//printf("tan : %f\n", tan(angle));
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		draw_line(window, tempx, tempy, window->ray.first_x, window->ray.first_y, angle);
-	 	tempx = window->ray.first_x;
-	 	tempy = window->ray.first_y;
-	 	window->ray.first_x += xstep;
-		//if (tan(window->ray.start) >= 0 && tan(window->ray.start) >= 0)
-	 		window->ray.first_y += ystep;
+		draw_line(window, tempx, tempy, window->ray.fh_x, window->ray.fh_y, angle);
+	 	tempx = window->ray.fh_x;
+	 	tempy = window->ray.fh_y;
+	 	window->ray.fh_x += xstep;
+	 	window->ray.fh_y += ystep;
 	}
-	//printf("xdir : %d  || ydir : %d\n", window->xdirection, window->ydirection);
 }
 
 void    drawing_rays(t_window *window)
@@ -158,8 +148,8 @@ void    drawing_rays(t_window *window)
 	if (window->ray.start >= 2.0 * M_PI)
 			window->ray.start -= 2.0 * M_PI;
 		init_ray(window, window->ray.start);
-		//check_direction(window, start);
 		first_horizental_step(window, window->ray.start);
-		//check_direction(window, end);
-		//first_horizental_step(window, end);
+		// first_vertical_step(window);
+		// vertical_steps(window, window->ray.start);
+
 }
