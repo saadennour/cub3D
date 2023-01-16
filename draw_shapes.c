@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:33:47 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:54:18 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	draw_square2(int x, int y, t_window *window, int color)
 
 void	draw_player(double x, double y, t_window *window, int color)
 {
-	line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
+	//line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
 	//printf("rotation angle : %f\n", window->rotation_angle);
 	//drawing_rays(window);
 	// double start;

@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 16:33:38 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:24:00 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_rays
 	double	vert_y;
 	double	start;
 	double	end;
+	int		vert_distance;
+	int		horiz_distance;
 	double	xray;
 	double	yray;
 }				t_rays;

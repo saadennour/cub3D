@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:40:40 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:53:45 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,58 @@ void    vertical_steps(t_window *window, double angle)
 		window->ray.vert_y *= -1;
 }
 
+void	find_distance(t_window *window)
+{
+	double deltaX;
+	double deltaY;
+
+	deltaX = window->ray.fv_x - window->y;
+	deltaY = window->ray.fv_y - window->x;
+	window->ray.vert_distance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+	deltaX = window->ray.fh_x - window->y;
+	deltaY = window->ray.fh_y - window->x;
+	window->ray.horiz_distance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+}
+
+int	hor_map_limits(t_window *window)
+{
+	if (window->ray.fh_x >= window->width || window->ray.fh_x <= 0
+		|| window->ray.fh_y >= window->height || window->ray.fh_y <= 0)
+		return (1);
+	return (0);
+}
+
+int	vert_map_limits(t_window *window)
+{
+	if (window->ray.fv_x >= window->width || window->ray.fv_x <= 0
+		|| window->ray.fv_y >= window->height || window->ray.fv_y <= 0)
+		return (1);
+	return (0);
+}
+
 void    wall_hit(t_window *window)
 {
-    while (find_wall(window, window->ray.fh_y, window->ray.fh_x) == 1)
+    while (!hor_map_limits(window) && find_wall(window, window->ray.fh_y, window->ray.fh_x))
 	{
 		window->ray.fh_x += window->ray.horiz_x;
 		window->ray.fh_y += window->ray.horiz_y;
 	}
-	while (find_wall(window, window->ray.fv_y, window->ray.fv_x) == 1)
+	while (!vert_map_limits(window) && find_wall(window, window->ray.fv_y, window->ray.fv_x))
 	{
 		window->ray.fv_x += window->ray.vert_x;
 		window->ray.fv_y += window->ray.vert_y;
 	}
-	if (facing_down(window, window->ray.start))
-		window->ray.yray = big(window->ray.fh_y, window->ray.fv_y);
+	find_distance(window);
+	if(window->ray.vert_distance < window->ray.horiz_distance)
+	{
+		window->ray.xray = window->ray.fv_x;
+		window->ray.yray = window->ray.fv_y;
+	}
 	else
-		window->ray.yray = small(window->ray.fh_y, window->ray.fv_y);
-	if (facing_right(window, window->ray.start))
-		window->ray.xray = small(window->ray.fh_x, window->ray.fv_x);
-	else
-		window->ray.xray = big(window->ray.fh_x, window->ray.fv_x);
+	{
+		window->ray.xray = window->ray.fh_x;
+		window->ray.yray = window->ray.fh_y;
+	}
 }
 
 void    draw_rays(t_window *window)
@@ -84,7 +116,9 @@ void    draw_rays(t_window *window)
 		vertical_steps(window, window->ray.start);
 		wall_hit(window);
 		draw_line(window, window->y, window->x, window->ray.xray, window->ray.yray);
+		// printf("start : %f\n", window->ray.start);
+		// printf("xray : %f\n", window->ray.xray);
+		// printf("yray : %f\n", window->ray.fv_y);
 		window->ray.start += step;
-		printf("test\n");
 	}
 }
