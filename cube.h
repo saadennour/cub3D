@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 14:34:11 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:32:09 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,16 @@ typedef struct s_rays
 {
 	double	fh_y;
 	double	fh_x;
+	double	horiz_x;
+	double	horiz_y;
 	double	fv_x;
 	double	fv_y;
+	double	vert_x;
+	double	vert_y;
 	double	start;
 	double	end;
+	double	xray;
+	double	yray;
 }				t_rays;
 typedef struct t_window
 {
@@ -138,11 +144,12 @@ void		draw_player(double x, double y, t_window *window, int color);
 void		drawing_rays(t_window *window);
 void		line(double x, double y, t_window *window, int color);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void		first_horizental_step(t_window *window, double angle);
 int			facing_right(t_window *window, double angle);
 int			facing_down(t_window *window, double angle);
-void	    vertical_steps(t_window *window, double angle);
-void 		draw_line(t_window *window, int x, int y, int endX, int endY, double angle);
+void 		draw_line(t_window *window, int x, int y, int endX, int endY);
 void	    first_vertical_step(t_window *window);
+void	    vertical_steps(t_window *window, double angle);
+void		first_horizental_step(t_window *window, double angle);
+void		horizental_steps(t_window *window, double angle);
 
 #endif

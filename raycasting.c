@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 14:51:42 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:31:52 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@ void	signle_ray(double x, double y, double angle, t_window *window, int color)
 	}
 }
 
-void draw_line(t_window *window, int x, int y, int endX, int endY, double angle)
+void draw_line(t_window *window, int x, int y, int endX, int endY)
 {
-	(void)angle;
 	double deltaX = endX - x;
 	double deltaY = endY - y;
-	// printf("deltax : %f | deltay : %f\n", deltaX, deltaY);
 	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
-	
-	// printf("pix : %d\n", pixels);
 	deltaX /= pixels;
 	deltaY /= pixels;
 	double pixelX = x;
@@ -96,7 +92,7 @@ int	facing_right(t_window *window, double angle)
 	return (0);
 }
 
-void	init_ray(t_window *window, double angle)
+void	first_horizental_step(t_window *window, double angle)
 {
 	(void)angle;
 	window->ray.fh_y = floor(window->x / 40) * 40;
@@ -105,27 +101,26 @@ void	init_ray(t_window *window, double angle)
 	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
 }
 
-void	first_horizental_step(t_window *window, double angle)
+void	horizental_steps(t_window *window, double angle)
 {
 	double	tempx;
 	double	tempy;
-	double	xstep;
 	double	ystep;
 	
-	ystep = 40 * window->ydirection;
-	xstep = ystep / tan(angle);
-	if ((xstep < 0 && facing_right(window, angle)) || (xstep > 0 && !facing_right(window, angle)))
-		xstep *= -1;
+	window->ray.horiz_y = 40 * window->ydirection;
+	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
+	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
+		window->ray.horiz_x *= -1;
 	tempx = window->y;
 	tempy = window->x;
-	for (int i = 0; i < 9; i++)
-	{
-		draw_line(window, tempx, tempy, window->ray.fh_x, window->ray.fh_y, angle);
-	 	tempx = window->ray.fh_x;
-	 	tempy = window->ray.fh_y;
-	 	window->ray.fh_x += xstep;
-	 	window->ray.fh_y += ystep;
-	}
+	// for (int i = 0; i < 9; i++)
+	// {
+	// 	draw_line(window, tempx, tempy, window->ray.fh_x, window->ray.fh_y, angle);
+	//  	tempx = window->ray.fh_x;
+	//  	tempy = window->ray.fh_y;
+	//  	window->ray.fh_x += window->ray.horiz_x;
+	//  	window->ray.fh_y += window->ray.horiz_y;
+	// }
 }
 
 void    drawing_rays(t_window *window)
