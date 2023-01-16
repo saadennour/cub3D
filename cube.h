@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 16:32:09 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:33:38 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,6 @@ void	    first_vertical_step(t_window *window);
 void	    vertical_steps(t_window *window, double angle);
 void		first_horizental_step(t_window *window, double angle);
 void		horizental_steps(t_window *window, double angle);
+void    	draw_rays(t_window *window);
 
 #endif

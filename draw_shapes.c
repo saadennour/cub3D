@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/14 22:05:56 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:33:47 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	draw_player(double x, double y, t_window *window, int color)
 	// double start;
 
 	// start = window->rotation_angle - (FOV / 2);
-	drawing_rays(window);
+	draw_rays(window);
 	draw_square(x, y, window, color);
 }

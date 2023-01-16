@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:31:52 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:35:24 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,10 @@ void	first_horizental_step(t_window *window, double angle)
 
 void	horizental_steps(t_window *window, double angle)
 {
-	double	tempx;
-	double	tempy;
-	double	ystep;
-	
 	window->ray.horiz_y = 40 * window->ydirection;
 	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
 	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
 		window->ray.horiz_x *= -1;
-	tempx = window->y;
-	tempy = window->x;
 	// for (int i = 0; i < 9; i++)
 	// {
 	// 	draw_line(window, tempx, tempy, window->ray.fh_x, window->ray.fh_y, angle);
@@ -142,7 +136,6 @@ void    drawing_rays(t_window *window)
 			window->ray.start += 2.0 * M_PI;
 	if (window->ray.start >= 2.0 * M_PI)
 			window->ray.start -= 2.0 * M_PI;
-		init_ray(window, window->ray.start);
 		first_horizental_step(window, window->ray.start);
 		// first_vertical_step(window);
 		// vertical_steps(window, window->ray.start);
