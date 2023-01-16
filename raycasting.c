@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:35:24 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:16:01 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	signle_ray(double x, double y, double angle, t_window *window, int color)
 	double deltaY = sin(angle);
 	double tmpcos = deltaX;
 	double tmpsin = deltaY;
-	while (find_wall(window, y - 5, x - 5) == 1)
+	while (find_wall(window, y - 5, x - 5, 5) == 1)
 	{
 		my_mlx_pixel_put(window->px, x, y, color);
 		x += deltaX;

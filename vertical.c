@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 17:53:45 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:13:26 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ int	vert_map_limits(t_window *window)
 
 void    wall_hit(t_window *window)
 {
-    while (!hor_map_limits(window) && find_wall(window, window->ray.fh_y, window->ray.fh_x))
+    while (!hor_map_limits(window) && find_wall(window, window->ray.fh_y, window->ray.fh_x, -1))
 	{
 		window->ray.fh_x += window->ray.horiz_x;
 		window->ray.fh_y += window->ray.horiz_y;
 	}
-	while (!vert_map_limits(window) && find_wall(window, window->ray.fv_y, window->ray.fv_x))
+	while (!vert_map_limits(window) && find_wall(window, window->ray.fv_y, window->ray.fv_x, -1))
 	{
 		window->ray.fv_x += window->ray.vert_x;
 		window->ray.fv_y += window->ray.vert_y;

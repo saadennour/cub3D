@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 17:24:00 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:59:33 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int			shut(t_window *window);
 int			key_hook(int keycode, t_window *window);
 int			check_textures(t_config *config, char *file);
 void		find_player(t_window *window, char **map);
-int			find_wall(t_window *window, int i, int j);
+int			find_wall(t_window *window, int i, int j, int offset);
 int			tallest_line(char **map);
 
 // DRAWING THE MAP AND ITS COMPONENTS

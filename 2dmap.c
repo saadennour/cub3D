@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 18:00:58 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:13:13 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,14 @@ void	find_player(t_window *window, char **map)
 	}
 }
 
-int	find_wall(t_window *window, int i, int j)
+int	find_wall(t_window *window, int i, int j, int offset)
 {
 	int	x;
 	int	y;
 	
 	printf("i : %d || j : %d\n", i , j);
-	x = (i - 1) / 40 + 6;
-	y = (j - 1) / 40;
-	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
-	if (window->map[x][y] == '1')
-		return (0);
-	else
-		return (1);
-	return (0);
-}
-
-int	find_wall(t_window *window, int i, int j)
-{
-	int	x;
-	int	y;
-	
-	printf("i : %d || j : %d\n", i , j);
-	x = (i - 1) / 40 + 6;
-	y = (j - 1) / 40;
+	x = (i + offset) / 40 + 6;
+	y = (j + offset) / 40;
 	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
 	if (window->map[x][y] == '1')
 		return (0);
