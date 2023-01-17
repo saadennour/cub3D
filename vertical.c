@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 21:13:26 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:53:36 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ void    first_vertical_step(t_window *window)
     if (facing_right(window, window->ray.start) == 1)
 		window->ray.fv_x += 40;
     window->ray.fv_y = window->x + (window->y - window->ray.fv_x) * tan(window->ray.start);
+	if (window->ray.fv_y > 8000 || window->ray.fv_y < -8000)
+		window->ray.fv_y = window->height;
 }
 
 void    vertical_steps(t_window *window, double angle)
 {
     window->ray.vert_x = 40 * window->xdirection;
     window->ray.vert_y = window->ray.vert_x * tan(window->ray.start);
+	if (window->ray.vert_y > 8000 || window->ray.vert_y < -8000)
+		window->ray.vert_y = window->height;
     if ((window->ray.vert_y < 0 && facing_down(window, angle)) || (window->ray.vert_y > 0 && !facing_down(window, angle)))
 		window->ray.vert_y *= -1;
 }
@@ -73,12 +77,12 @@ int	vert_map_limits(t_window *window)
 
 void    wall_hit(t_window *window)
 {
-    while (!hor_map_limits(window) && find_wall(window, window->ray.fh_y, window->ray.fh_x, -1))
+    while (!hor_map_limits(window) && find_wall(window, window->ray.fh_y, window->ray.fh_x))
 	{
 		window->ray.fh_x += window->ray.horiz_x;
 		window->ray.fh_y += window->ray.horiz_y;
 	}
-	while (!vert_map_limits(window) && find_wall(window, window->ray.fv_y, window->ray.fv_x, -1))
+	while (!vert_map_limits(window) && find_wall(window, window->ray.fv_y, window->ray.fv_x))
 	{
 		window->ray.fv_x += window->ray.vert_x;
 		window->ray.fv_y += window->ray.vert_y;
@@ -88,11 +92,13 @@ void    wall_hit(t_window *window)
 	{
 		window->ray.xray = window->ray.fv_x;
 		window->ray.yray = window->ray.fv_y;
+		printf("V\n");
 	}
 	else
 	{
 		window->ray.xray = window->ray.fh_x;
 		window->ray.yray = window->ray.fh_y;
+		printf("H\n");
 	}
 }
 
@@ -103,13 +109,13 @@ void    draw_rays(t_window *window)
     window->ray.start = window->rotation_angle - (FOV / 2);
 	window->ray.end = window->rotation_angle + (FOV / 2);
 	step = 2 * M_PI / 180;
-	// if (window->ray.start <= 0.0)
-	// 		window->ray.start += 2.0 * M_PI;
-	// if (window->ray.start >= 2.0 * M_PI)
-	// 		window->ray.start -= 2.0 * M_PI;
 	
-	while (window->ray.start < window->ray.end)
-	{
+	// while (window->ray.start < window->ray.end)
+	// {
+		// if (window->ray.start < 0.0)
+		// 		window->ray.start += 2.0 * M_PI;
+		// if (window->ray.start > 2.0 * M_PI)
+		// 		window->ray.start -= 2.0 * M_PI;
 		first_horizental_step(window, window->ray.start);
 		first_vertical_step(window);
 		horizental_steps(window, window->ray.start);
@@ -117,8 +123,8 @@ void    draw_rays(t_window *window)
 		wall_hit(window);
 		draw_line(window, window->y, window->x, window->ray.xray, window->ray.yray);
 		// printf("start : %f\n", window->ray.start);
-		// printf("xray : %f\n", window->ray.xray);
-		// printf("yray : %f\n", window->ray.fv_y);
+		 printf("xray : %f\n", window->ray.xray);
+		 printf("yray : %f\n", window->ray.yray);
 		window->ray.start += step;
-	}
+	//}
 }

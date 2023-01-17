@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/16 21:16:01 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:52:09 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	signle_ray(double x, double y, double angle, t_window *window, int color)
 	double deltaY = sin(angle);
 	double tmpcos = deltaX;
 	double tmpsin = deltaY;
-	while (find_wall(window, y - 5, x - 5, 5) == 1)
+	while (find_wall(window, y - 5, x - 5) == 1)
 	{
 		my_mlx_pixel_put(window->px, x, y, color);
 		x += deltaX;
@@ -98,13 +98,18 @@ void	first_horizental_step(t_window *window, double angle)
 	window->ray.fh_y = floor(window->x / 40) * 40;
 	if (facing_down(window, window->ray.start) == 1)
 		window->ray.fh_y += 40;
+	printf("facing down : %d\n", facing_down(window, window->ray.start));
 	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
+	if (window->ray.fh_x > 8000 || window->ray.fh_x < -8000)
+		window->ray.fh_x = window->width;
 }
 
 void	horizental_steps(t_window *window, double angle)
 {
 	window->ray.horiz_y = 40 * window->ydirection;
 	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
+	if (window->ray.fh_x > 8000 || window->ray.fh_x < -8000)
+		window->ray.fh_x = window->width;
 	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
 		window->ray.horiz_x *= -1;
 	// for (int i = 0; i < 9; i++)

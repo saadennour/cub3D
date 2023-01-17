@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/16 21:15:54 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:18:49 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	key_hook(int keycode, t_window *window)
 			x -= window->co;
 			y += window->si;
 		}
-		if (find_wall(window, x, y, 5) == 1)
+		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
 			window->y = y;
@@ -118,7 +118,7 @@ int	key_hook(int keycode, t_window *window)
 			x -= window->si;
 			y += window->co;
 		}
-		if (find_wall(window, x, y, 5) == 1)
+		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
 			window->y = y;
@@ -139,7 +139,7 @@ int	key_hook(int keycode, t_window *window)
 			x += window->co;
 			y -= window->si;
 		}
-		if (find_wall(window, x, y, 5) == 1)
+		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
 			window->y = y;
@@ -165,7 +165,7 @@ int	key_hook(int keycode, t_window *window)
 			x += window->si;
 			y -= window->co;
 		}
-		if (find_wall(window, x, y, 5) == 1)
+		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
 			window->y = y;
