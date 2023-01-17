@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/17 18:41:56 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:42:44 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	find_wall(t_window *window, int i, int j)
 	int	y;
 	
 	//printf("i : %d || j : %d\n", i , j);
-	x = (i - 1) / 40 + 6;
+	x = (i - 2) / 40 + 6;
 	y = j / 40;
 	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
 	if (window->map[x][y] == '1')

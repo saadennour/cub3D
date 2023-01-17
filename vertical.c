@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/17 18:53:36 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:46:43 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	find_distance(t_window *window)
 	deltaX = window->ray.fh_x - window->y;
 	deltaY = window->ray.fh_y - window->x;
 	window->ray.horiz_distance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+	printf("vertical distance : %d || horizental distance : %d\n", window->ray.vert_distance, window->ray.horiz_distance);
 }
 
 int	hor_map_limits(t_window *window)
@@ -123,8 +124,8 @@ void    draw_rays(t_window *window)
 		wall_hit(window);
 		draw_line(window, window->y, window->x, window->ray.xray, window->ray.yray);
 		// printf("start : %f\n", window->ray.start);
-		 printf("xray : %f\n", window->ray.xray);
-		 printf("yray : %f\n", window->ray.yray);
+		//printf("xray : %f\n", window->ray.xray);
+		printf("yray : %f\n", window->ray.yray);
 		window->ray.start += step;
 	//}
 }
