@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/17 18:18:49 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:23:47 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	key_hook(int keycode, t_window *window)
 		if (window->track_rotation <= -60)
 			window->track_rotation = 0;
 		window->rotation_angle -= 2 * M_PI / 180;
-		if (window->rotation_angle <= 0.0)
+		if (window->ray.start <= 0.0)
 			window->rotation_angle += 2.0 * M_PI;
 		minimap(window->map, window);
 	}
@@ -75,7 +75,7 @@ int	key_hook(int keycode, t_window *window)
 		if (window->track_rotation >= 60)
 			window->track_rotation = 0;
 		window->rotation_angle += 2 * M_PI / 180;
-		if (window->rotation_angle >= 2.0 * M_PI)
+		if (window->ray.start >= 2.0 * M_PI)
 			window->rotation_angle -= 2.0 * M_PI;
 		minimap(window->map, window);	
 	}
@@ -90,7 +90,7 @@ int	key_hook(int keycode, t_window *window)
 			y -= 4;
 		else
 		{
-			x -= window->co;
+			x += window->co;
 			y += window->si;
 		}
 		if (find_wall(window, x, y) == 1)
@@ -136,7 +136,7 @@ int	key_hook(int keycode, t_window *window)
 			y += 4;
 		else
 		{
-			x += window->co;
+			x -= window->co;
 			y -= window->si;
 		}
 		if (find_wall(window, x, y) == 1)
@@ -148,7 +148,6 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == W)
 	{
-		printf("rotation : %d\n", window->track_rotation);
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);

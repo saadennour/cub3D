@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/17 18:18:12 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:20:37 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,7 @@ void	    vertical_steps(t_window *window, double angle);
 void		first_horizental_step(t_window *window, double angle);
 void		horizental_steps(t_window *window, double angle);
 void    	draw_rays(t_window *window);
+int			find_wall_horiz(t_window *window, int i, int j);
+int			find_wall_vert(t_window *window, int i, int j);
 
 #endif
