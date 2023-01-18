@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:06:54 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:21:32 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ void	first_horizental_step(t_window *window, double angle)
 	if (facing_down(window, window->ray.start) == 1)
 		window->ray.fh_y += 40;
 	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
-	if (window->ray.fh_x > 8000 || window->ray.fh_x < -8000)
-		window->ray.fh_x = window->width;
+	if (window->ray.fh_x > 4000 || window->ray.fh_x < -4000)
+		window->ray.fh_x = window->height;
 }
 
 void	horizental_steps(t_window *window, double angle)
 {
 	window->ray.horiz_y = 40 * window->ydirection;
 	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
-	if (window->ray.fh_x > 8000 || window->ray.fh_x < -8000)
-		window->ray.fh_x = window->width;
+	if (window->ray.horiz_x > 4000 || window->ray.horiz_x < -4000)
+		window->ray.horiz_x = window->height;
 	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
 		window->ray.horiz_x *= -1;
 }

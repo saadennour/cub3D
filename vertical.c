@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:06:36 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:19:17 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    first_vertical_step(t_window *window)
     if (facing_right(window, window->ray.start) == 1)
 		window->ray.fv_x += 40;
     window->ray.fv_y = window->x + (window->y - window->ray.fv_x) * tan(window->ray.start);
-	if (window->ray.fv_y > 8000 || window->ray.fv_y < -8000)
+	if (window->ray.fv_y > 4000 || window->ray.fv_y < -4000)
 		window->ray.fv_y = window->width;
 }
 
@@ -40,7 +40,7 @@ void    vertical_steps(t_window *window, double angle)
 {
     window->ray.vert_x = 40 * window->xdirection;
     window->ray.vert_y = window->ray.vert_x * tan(window->ray.start);
-	if (window->ray.vert_y > 8000 || window->ray.vert_y < -8000)
+	if (window->ray.vert_y > 4000 || window->ray.vert_y < -4000)
 		window->ray.vert_y = window->width;
     if ((window->ray.vert_y < 0 && facing_down(window, angle)) || (window->ray.vert_y > 0 && !facing_down(window, angle)))
 		window->ray.vert_y *= -1;
