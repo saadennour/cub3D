@@ -76,6 +76,8 @@ void	first_horizental_step(t_window *window, double angle)
 	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
 	if (window->ray.fh_x > 4000 || window->ray.fh_x < -4000)
 		window->ray.fh_x = window->height;
+		if (window->ray.fh_x < -4000)
+		window->ray.fh_x = window->height * -1;
 }
 
 void	horizental_steps(t_window *window, double angle)
@@ -84,6 +86,8 @@ void	horizental_steps(t_window *window, double angle)
 	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
 	if (window->ray.horiz_x > 4000 || window->ray.horiz_x < -4000)
 		window->ray.horiz_x = window->height;
+	if (window->ray.horiz_x < -4000)
+		window->ray.horiz_x = window->height * -1;
 	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
 		window->ray.horiz_x *= -1;
 }
