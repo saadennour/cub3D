@@ -37,7 +37,6 @@ void draw_line(t_window *window, int x, int y, int endX, int endY)
 	deltaY /= pixels;
 	double pixelX = x;
 	double pixelY = y;
-	
 	while (pixels)
 	{
 		if (pixelX >= window->width || pixelY >= window->height || pixelX <= 0 || pixelY <= 0)
@@ -75,9 +74,9 @@ void	first_horizental_step(t_window *window, double angle)
 		window->ray.fh_y += 40;
 	window->ray.fh_x = window->y + (window->x - window->ray.fh_y) / tan(window->ray.start);
 	if (window->ray.fh_x > 4000 || window->ray.fh_x < -4000)
-		window->ray.fh_x = window->height;
+		window->ray.fh_x = 9000;
 		if (window->ray.fh_x < -4000)
-		window->ray.fh_x = window->height * -1;
+		window->ray.fh_x = 9000 * -1;
 }
 
 void	horizental_steps(t_window *window, double angle)
@@ -85,9 +84,9 @@ void	horizental_steps(t_window *window, double angle)
 	window->ray.horiz_y = 40 * window->ydirection;
 	window->ray.horiz_x = window->ray.horiz_y / tan(angle);
 	if (window->ray.horiz_x > 4000 || window->ray.horiz_x < -4000)
-		window->ray.horiz_x = window->height;
+		window->ray.horiz_x = 9000;
 	if (window->ray.horiz_x < -4000)
-		window->ray.horiz_x = window->height * -1;
+		window->ray.horiz_x = 9000 * -1;
 	if ((window->ray.horiz_x < 0 && facing_right(window, angle)) || (window->ray.horiz_x > 0 && !facing_right(window, angle)))
 		window->ray.horiz_x *= -1;
 }

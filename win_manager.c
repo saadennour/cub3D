@@ -47,6 +47,12 @@ void	round_angles(t_window *window)
 		window->si = ceil(window->si);
 	else
 		window->si = floor(window->si);
+	if ((cos(window->rotation_angle) > 0 && cos(window->rotation_angle) < 0.01)
+		|| (cos(window->rotation_angle) < 0 && cos(window->rotation_angle) > -0.01))
+		window->co = 0;
+	if ((sin(window->rotation_angle) > 0 && sin(window->rotation_angle) < 0.01)
+		|| (sin(window->rotation_angle) < 0 && sin(window->rotation_angle) > -0.01))
+		window->si = 0;
 }
 
 int	key_hook(int keycode, t_window *window)
@@ -84,15 +90,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
-			x += 4;
-		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
-			y -= 4;
-		else
-		{
-			x += window->co;
-			y += window->si;
-		}
+		x += window->co;
+		y += window->si;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
@@ -105,19 +104,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y -= 4;
-		else if (window->track_rotation == 15 || window->track_rotation == -45)
-			x += 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -15)
-			x -= 4;
-		else if (window->track_rotation == 0)
-			y += 4;
-		else
-		{
-			x -= window->si;
-			y += window->co;
-		}
+		x -= window->si;
+		y += window->co;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
@@ -130,15 +118,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		if (window->track_rotation == 0 || window->track_rotation == 30 || window->track_rotation == -30)
-			x -= 4;
-		else if (window->track_rotation == 15 || window->track_rotation == -15 || window->track_rotation == 45 || window->track_rotation == -45)
-			y += 4;
-		else
-		{
-			x -= window->co;
-			y -= window->si;
-		}
+		x -= window->co;
+		y -= window->si;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
@@ -151,19 +132,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		if (window->track_rotation == 30 || window->track_rotation == -30)
-			y += 4;
-		else if (window->track_rotation == 15 || window->track_rotation == -45)
-			x -= 4;
-		else if (window->track_rotation == 45 || window->track_rotation == -15)
-			x += 4;
-		else if (window->track_rotation == 0)
-			y -= 4;
-		else
-		{
-			x += window->si;
-			y -= window->co;
-		}
+		x += window->si;
+		y -= window->co;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;

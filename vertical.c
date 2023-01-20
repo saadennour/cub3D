@@ -33,9 +33,9 @@ void    first_vertical_step(t_window *window)
 		window->ray.fv_x += 40;
     window->ray.fv_y = window->x + (window->y - window->ray.fv_x) * tan(window->ray.start);
 	if (window->ray.fv_y > 4000)
-		window->ray.fv_y = window->width;
+		window->ray.fv_y = 9000;
 	if (window->ray.fv_y < -4000)
-		window->ray.fv_y = window->width * -1;
+		window->ray.fv_y = 9000 * -1;
 }
 
 void    vertical_steps(t_window *window, double angle)
@@ -43,9 +43,9 @@ void    vertical_steps(t_window *window, double angle)
     window->ray.vert_x = 40 * window->xdirection;
     window->ray.vert_y = window->ray.vert_x * tan(window->ray.start);
 	if (window->ray.vert_y > 4000 || window->ray.vert_y < -4000)
-		window->ray.vert_y = window->width;
+		window->ray.vert_y = 9000;
 	if (window->ray.vert_y < -4000)
-		window->ray.vert_y = window->width * -1;
+		window->ray.vert_y = 9000 * -1;
     if ((window->ray.vert_y < 0 && facing_down(window, angle)) || (window->ray.vert_y > 0 && !facing_down(window, angle)))
 		window->ray.vert_y *= -1;
 }
@@ -91,23 +91,17 @@ void    wall_hit(t_window *window)
 		window->ray.fv_x += window->ray.vert_x;
 		window->ray.fv_y += window->ray.vert_y;
 	}
-//	printf("horizentalX ray : %f || verticalY ray : %f\n", window->ray.fh_x, window->ray.fv_y);
-//	printf("horizentalY ray : %f || verticalX ray : %f\n", window->ray.fh_y, window->ray.fv_x);
 	find_distance(window);
 	if(window->ray.vert_distance < window->ray.horiz_distance)
 	{
 		window->ray.xray = window->ray.fv_x;
 		window->ray.yray = window->ray.fv_y;
-		printf("vertival\n");
 	}
 	else
 	{
 		window->ray.xray = window->ray.fh_x;
 		window->ray.yray = window->ray.fh_y;
-		printf("horizentall\n");
 	}
-	//printf("start : %f\n", window->ray.start);
-	//printf("facing down : %d || right : %d\n", facing_down(window, window->ray.start), facing_right(window, window->ray.start));
 }
 
 void    draw_rays(t_window *window)
@@ -116,7 +110,7 @@ void    draw_rays(t_window *window)
 	
     window->ray.start = window->rotation_angle - (FOV / 2);
 	window->ray.end = window->rotation_angle + (FOV / 2);
-	step = 2 * M_PI / 180;
+	step = FOV / 550;
 	while (window->ray.start < window->ray.end)
 	{
 		first_horizental_step(window, window->ray.start);
