@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/18 14:55:06 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:41:11 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,22 @@ void	minimap(char **map, t_window *window)
 	window->img = mlx_new_image(window->mlx, window->width, window->height);
 	window->px = malloc(sizeof(t_data));
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
-	window->img_size = 40;
+	window->player_size = TILE_SIZE;
+	window->ray.project_plane = (window->width / 2) / tan(FOV / 2);
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
 			if (map[i][j] == '1')
-				draw_square(j * 40, (i - 6) * 40, window, SKIN);
+				draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, SKIN);
 			else if (ft_strchr(map[i][j], "0NSWE"))
-				draw_square(j * 40, (i - 6) * 40, window, BEIGE);
+				draw_square( SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, BEIGE);
 			j++;
 		}
 		i++;
 	}
-	window->img_size = 10;
+	window->player_size = SCALE_DOWN * 10;
 	draw_player(window->y, window->x, window, RED);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
 }

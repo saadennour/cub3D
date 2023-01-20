@@ -14,6 +14,7 @@ SRCS =	main.c	\
 		draw_shapes.c \
 		raycasting.c \
 		vertical.c \
+		wall_render.c \
 
 all : $(NAME)
 

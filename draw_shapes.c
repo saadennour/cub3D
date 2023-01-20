@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/17 19:58:01 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:47:00 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	draw_square(int x, int y, t_window *window, int color)
 	int square_y;
 	int	temp_x;
 
-	square_x = x + window->img_size;
-	square_y = y + window->img_size;
+	square_x = (x + window->player_size);
+	square_y = (y + window->player_size);
 	temp_x = x;
 	while (y < square_y)
 	{
@@ -59,12 +59,7 @@ void	draw_square(int x, int y, t_window *window, int color)
 
 void	draw_player(double x, double y, t_window *window, int color)
 {
-	//line(x + (window->img_size / 2), y + (window->img_size / 2), window, color);
-	//printf("rotation angle : %f\n", window->rotation_angle);
-	//drawing_rays(window);
-	// double start;
-
-	// start = window->rotation_angle - (FOV / 2);
 	draw_rays(window);
-	draw_square(x - 5, y - 5, window, color);
+	draw_square(SCALE_DOWN * (x - 5), SCALE_DOWN * (y - 5), window, color);
+	//tree_d_drawing(window);
 }

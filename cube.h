@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/18 13:20:37 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:31:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@
 # define SKIN			0XE9967A
 # define RED			0XFF0000
 # define YELLOW			0XFDF4A4
+# define BRICK			0XAA4A44
 # define W				13
 # define A				0
 # define S				1
 # define D				2
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
-# define PROJEC_PLANE	476.31
+# define NUMBER_OF_RAYS	550
+# define SCALE_DOWN		0.3
+# define TILE_SIZE		40
 
 typedef struct t_idpaths
 {
@@ -79,7 +82,12 @@ typedef struct s_rays
 	int		horiz_distance;
 	double	xray;
 	double	yray;
+	double	*xrays;
+	double	*yrays;
+	double	project_plane;
+	double	wallheight;
 }				t_rays;
+
 typedef struct t_window
 {
 	t_rays	ray;
@@ -92,7 +100,7 @@ typedef struct t_window
 	int		y;
 	int		wall_x;
 	int		wall_y;
-	int		img_size;
+	int		player_size;
 	double	rotation_angle;
 	double	line_x;
 	double	line_y;
@@ -155,5 +163,6 @@ void		horizental_steps(t_window *window, double angle);
 void    	draw_rays(t_window *window);
 int			find_wall_horiz(t_window *window, int i, int j);
 int			find_wall_vert(t_window *window, int i, int j);
+void		tree_d_drawing(t_window *window);
 
 #endif

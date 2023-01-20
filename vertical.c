@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:19:17 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:46:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,14 @@ void    wall_hit(t_window *window)
 void    draw_rays(t_window *window)
 {
 	double	step;
-	
+	int 	i;
+
+	i = 0;
     window->ray.start = window->rotation_angle - (FOV / 2);
 	window->ray.end = window->rotation_angle + (FOV / 2);
-	step = FOV / 550;
+	step = FOV / NUMBER_OF_RAYS;
+	window->ray.xrays = malloc(sizeof(double) * NUMBER_OF_RAYS);
+	window->ray.yrays = malloc(sizeof(double) * NUMBER_OF_RAYS);
 	while (window->ray.start < window->ray.end)
 	{
 		first_horizental_step(window, window->ray.start);
@@ -118,7 +122,12 @@ void    draw_rays(t_window *window)
 		horizental_steps(window, window->ray.start);
 		vertical_steps(window, window->ray.start);
 		wall_hit(window);
-		draw_line(window, window->y, window->x, window->ray.xray, window->ray.yray);
+		window->ray.xrays[i] = window->ray.xray;
+		window->ray.yrays[i] = window->ray.yray;
+		draw_line(window, SCALE_DOWN * window->y, SCALE_DOWN * window->x,
+		SCALE_DOWN * window->ray.xray, SCALE_DOWN * window->ray.yray);
 		window->ray.start += step;
+		i++;
 	}
+	tree_d_drawing(window);
 }
