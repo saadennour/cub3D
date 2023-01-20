@@ -21,9 +21,7 @@ void	start_game(t_config *config)
 	window.width = 40 * tallest_line(&config->data[6]);
 	window.win = mlx_new_window(window.mlx, window.width ,window.height, "CUBE3D");
 	window.map = config->data;
-	window.rotation_speed = 2* M_PI / 60;
 	window.rotation_angle = 0;
-	window.track_rotation = 0;
 	find_player(&window, config->data);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
@@ -67,9 +65,6 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == RIGHT_ARROW)
 	{
-		window->track_rotation--;
-		if (window->track_rotation <= -60)
-			window->track_rotation = 0;
 		window->rotation_angle -= 2 * M_PI / 180;
 		if (window->ray.start <= 0.0)
 			window->rotation_angle += 2.0 * M_PI;
@@ -77,9 +72,6 @@ int	key_hook(int keycode, t_window *window)
 	}
 	if (keycode == LEFT_ARROW)
 	{
-		window->track_rotation++;
-		if (window->track_rotation >= 60)
-			window->track_rotation = 0;
 		window->rotation_angle += 2 * M_PI / 180;
 		if (window->ray.start >= 2.0 * M_PI)
 			window->rotation_angle -= 2.0 * M_PI;

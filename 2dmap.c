@@ -26,20 +26,11 @@ void	find_player(t_window *window, char **map)
 			if (ft_strchr(map[x][y], "NSWE"))
 			{
 				if (map[x][y] == 'N')
-				{
 					window->rotation_angle = 3 * M_PI / 2;
-					window->track_rotation = 15;
-				}
 				else if (map[x][y] == 'S')
-				{
 					window->rotation_angle = M_PI / 2;
-					window->track_rotation = -15;
-				}
 				else if (map[x][y] == 'W')
-				{
 					window->rotation_angle = M_PI;
-					window->track_rotation = 30;
-				}
 				window->x = (x - 6) * 40 + 15;
 				window->y = y * 40 + 15;
 			}
@@ -53,12 +44,14 @@ int	find_wall(t_window *window, int i, int j)
 {
 	int	x;
 	int	y;
+	int	x2;
+	int	y2;
 
-	//printf("i : %d || j : %d\n", i , j);
-	x = (i - 2) / 40 + 6;
-	y = j / 40;
-	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
-	if (window->map[x][y] == '1')
+	x = (i - 5) / 40 + 6;
+	y = (j - 5) / 40;
+	x2 = i / 40 + 6;
+	y2 = j / 40;
+	if (window->map[x][y] == '1' || window->map[x2][y2] == '1')
 		return (0);
 	else
 		return (1);
@@ -86,12 +79,10 @@ int	find_wall_vert(t_window *window, int i, int j)
 	int	x;
 	int	y;
 
-	//printf("i : %d || j : %d\n", i , j);
 	x = i / 40 + 6;
 	y = j / 40;
 	if (!facing_right(window, window->ray.start))
-		y = (j - 39) / 40;
-	//printf ("x : %d | y : %d | char : %c\n", x, y, window->map[x][y]);
+		y = (j - 40) / 40;
 	if (window->map[x][y] == '1')
 		return (0);
 	else

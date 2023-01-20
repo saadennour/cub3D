@@ -66,5 +66,5 @@ void	draw_player(double x, double y, t_window *window, int color)
 
 	// start = window->rotation_angle - (FOV / 2);
 	draw_rays(window);
-	draw_square(x, y, window, color);
+	draw_square(x - 5, y - 5, window, color);
 }

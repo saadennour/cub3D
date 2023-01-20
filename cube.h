@@ -25,7 +25,7 @@
 # define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
-# define RED			0X00FF0000
+# define RED			0XFF0000
 # define YELLOW			0XFDF4A4
 # define W				13
 # define A				0
@@ -33,6 +33,7 @@
 # define D				2
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
+# define PROJEC_PLANE	476.31
 
 typedef struct t_idpaths
 {
@@ -92,11 +93,9 @@ typedef struct t_window
 	int		wall_x;
 	int		wall_y;
 	int		img_size;
-	double	rotation_speed;
 	double	rotation_angle;
 	double	line_x;
 	double	line_y;
-	int		track_rotation;
 	double	si;
 	double	co;
 	int		xdirection;
