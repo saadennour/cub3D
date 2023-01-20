@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/20 19:49:30 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:50:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_wall(t_window *window, int x)
 	int	y_start;
 
 	y_start = (window->height / 2) - window->ray.wallheight;
-	printf("")
+	//printf y_start and wall height to see why it doesnt draw the strips
 	while (y_start < window->ray.wallheight)
 	{
 		my_mlx_pixel_put(window->px, x, y_start, BRICK);
