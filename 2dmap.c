@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/20 19:41:11 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:14:23 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	minimap(char **map, t_window *window)
 	int	j;
 
 	i = 6;
-	window->img = mlx_new_image(window->mlx, window->width, window->height);
+	window->img = mlx_new_image(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	window->px = malloc(sizeof(t_data));
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
 	window->player_size = TILE_SIZE;
-	window->ray.project_plane = (window->width / 2) / tan(FOV / 2);
+	window->ray.project_plane = (WINDOW_WIDTH / 2) / tan(FOV / 2);
 	while (map[i])
 	{
 		j = 0;

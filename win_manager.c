@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/18 15:23:47 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:28:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_game(t_config *config)
 	window.mlx = mlx_init();
 	window.height = 40 * line_counter(&config->data[6]);
 	window.width = 40 * tallest_line(&config->data[6]);
-	window.win = mlx_new_window(window.mlx, window.width ,window.height, "CUBE3D");
+	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH , WINDOW_HEIGHT, "CUBE3D");
 	window.map = config->data;
 	window.rotation_angle = 0;
 	find_player(&window, config->data);
@@ -65,16 +65,16 @@ int	key_hook(int keycode, t_window *window)
 	mlx_destroy_image(window->mlx, window->img);
 	if (keycode == RIGHT_ARROW)
 	{
-		window->rotation_angle -= 2 * M_PI / 180;
-		if (window->ray.start <= 0.0)
-			window->rotation_angle += 2.0 * M_PI;
+		window->rotation_angle += 2 * M_PI / 180;
+		if (window->ray.start >= 2.0 * M_PI)
+			window->rotation_angle -= 2.0 * M_PI;
 		minimap(window->map, window);
 	}
 	if (keycode == LEFT_ARROW)
 	{
-		window->rotation_angle += 2 * M_PI / 180;
-		if (window->ray.start >= 2.0 * M_PI)
-			window->rotation_angle -= 2.0 * M_PI;
+		window->rotation_angle -= 2 * M_PI / 180;
+		if (window->ray.start <= 0.0)
+			window->rotation_angle += 2.0 * M_PI;
 		minimap(window->map, window);	
 	}
 	if (keycode == A)
@@ -82,8 +82,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		x += window->co;
-		y += window->si;
+		x -= window->co;
+		y -= window->si;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;
@@ -110,8 +110,8 @@ int	key_hook(int keycode, t_window *window)
 		window->si = (sin(window->rotation_angle) * 5);
 		window->co = (cos(window->rotation_angle) * 5);
 		round_angles(window);
-		x -= window->co;
-		y -= window->si;
+		x += window->co;
+		y += window->si;
 		if (find_wall(window, x, y) == 1)
 		{
 			window->x = x;

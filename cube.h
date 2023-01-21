@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/20 19:31:28 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:13:43 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@
 # define D				2
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
-# define NUMBER_OF_RAYS	550
+# define NUMBER_OF_RAYS	1366
 # define SCALE_DOWN		0.3
 # define TILE_SIZE		40
+# define WINDOW_WIDTH 	1366
+# define WINDOW_HEIGHT 	768
 
 typedef struct t_idpaths
 {

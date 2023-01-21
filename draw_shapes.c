@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/20 19:47:00 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:26:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || x >= WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
+		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
@@ -57,9 +59,33 @@ void	draw_square(int x, int y, t_window *window, int color)
 	}
 }
 
+void	draw_floor(t_window *window)
+{
+	int x;
+	int y;
+
+	y = WINDOW_HEIGHT/ 2;
+	x = 0;
+	while (y < WINDOW_HEIGHT)
+	{
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			my_mlx_pixel_put(window->px, x, y, 0XC2B2B2);
+			x++;
+		}
+		y++;
+	}
+	
+}
+
 void	draw_player(double x, double y, t_window *window, int color)
 {
+	(void)x;
+	(void)y;
+	(void)color;
 	draw_rays(window);
 	draw_square(SCALE_DOWN * (x - 5), SCALE_DOWN * (y - 5), window, color);
-	//tree_d_drawing(window);
+	draw_floor(window);
+	tree_d_drawing(window);
 }

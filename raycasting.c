@@ -6,27 +6,11 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:21:32 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:13:18 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cube.h"
-
-void	signle_ray(double x, double y, double angle, t_window *window, int color)
-{
-	double deltaX = cos(angle);
-	double deltaY = sin(angle);
-	double tmpcos = deltaX;
-	double tmpsin = deltaY;
-	while (find_wall(window, y - 5, x - 5) == 1)
-	{
-		my_mlx_pixel_put(window->px, x, y, color);
-		x += deltaX;
-		y += deltaY;
-		tmpcos++;
-		tmpsin++;
-	}
-}
 
 void draw_line(t_window *window, int x, int y, int endX, int endY)
 {

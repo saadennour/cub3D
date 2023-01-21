@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/20 19:46:56 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:15:00 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,8 @@ void    draw_rays(t_window *window)
 		window->ray.xrays[i] = window->ray.xray;
 		window->ray.yrays[i] = window->ray.yray;
 		draw_line(window, SCALE_DOWN * window->y, SCALE_DOWN * window->x,
-		SCALE_DOWN * window->ray.xray, SCALE_DOWN * window->ray.yray);
+			SCALE_DOWN * window->ray.xray, SCALE_DOWN * window->ray.yray);
 		window->ray.start += step;
 		i++;
 	}
-	tree_d_drawing(window);
 }
