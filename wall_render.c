@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/21 14:32:58 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:48:40 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ void	tree_d_drawing(t_window *window)
 	double	ray_distance;
 	//li b3id kitrsem 9rib ou li 9rib kitrsem b3id
 	i = 0;
+	window->ray.start = window->rotation_angle - (FOV / 2);
 	while (i < NUMBER_OF_RAYS)
 	{
 		ray_distance = ray_dis(window, window->ray.xrays[i], window->ray.yrays[i]) * cos(window->ray.start - window->rotation_angle);
 		window->ray.wallheight = (TILE_SIZE / ray_distance) * window->ray.project_plane;
 		draw_wall(window, i);
 		i++;
+		window->ray.start += FOV / NUMBER_OF_RAYS;
 	}
 }

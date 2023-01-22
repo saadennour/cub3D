@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/21 16:26:56 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:23:16 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	draw_square(int x, int y, t_window *window, int color)
 	square_x = (x + window->player_size);
 	square_y = (y + window->player_size);
 	temp_x = x;
-	while (y < square_y)
+	while (y <= square_y)
 	{
 		x = temp_x;
-		while (x < square_x)
+		while (x <= square_x)
 		{
 			my_mlx_pixel_put(window->px, x, y, color);
 			x++;
@@ -86,6 +86,6 @@ void	draw_player(double x, double y, t_window *window, int color)
 	(void)color;
 	draw_rays(window);
 	draw_square(SCALE_DOWN * (x - 5), SCALE_DOWN * (y - 5), window, color);
-	draw_floor(window);
-	tree_d_drawing(window);
+	// draw_floor(window);
+	// tree_d_drawing(window);
 }
