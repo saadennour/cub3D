@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/22 17:50:45 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:48:59 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
 # define NUMBER_OF_RAYS	1366
-# define SCALE_DOWN		1
+# define SCALE_DOWN		0.1
 # define TILE_SIZE		40
 # define WINDOW_WIDTH 	1366
 # define WINDOW_HEIGHT 	768

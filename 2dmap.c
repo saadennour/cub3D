@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/22 18:23:43 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:44:29 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	find_wall_horiz(t_window *window, int i, int j)
 	x = (i - 2) / 40 + 6;
 	if (facing_down(window, window->ray.start))
 		x = (i + 39) / 40 + 6;
-	y = (j + 1) / 40;
+	y = j / 40;
 	if (!facing_right(window, window->ray.start))
 		y = j / 40;
 	if (window->map[x][y] == '1')

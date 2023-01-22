@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/22 17:48:08 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:48:18 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ void    wall_hit(t_window *window)
 	{
 		window->ray.xray = window->ray.fh_x;
 		window->ray.yray = window->ray.fh_y;
+	}
+	if (window->ray.vert_distance == window->ray.horiz_distance)
+	{
+		window->ray.xray = trunc(window->ray.xray);
+		window->ray.yray = trunc(window->ray.yray);
 	}
 }
 
