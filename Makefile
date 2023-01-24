@@ -19,7 +19,7 @@ SRCS =	main.c	\
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-		gcc $(FLAGS) $(SRCS) -o cub3D
+		gcc $(FLAGS) $(SRCS) -o cub3D -fsanitize=address -g
 
 clean :
 		rm -rf $(NAME)

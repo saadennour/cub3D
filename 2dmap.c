@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/21 16:14:23 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:07:41 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	find_wall(t_window *window, int i, int j)
 	y = (j - 5) / 40;
 	x2 = i / 40 + 6;
 	y2 = j / 40;
-	if (window->map[x][y] == '1' || window->map[x2][y2] == '1')
+	if (window->map[x][y] && (window->map[x][y] == '1' || window->map[x2][y2] == '1'))
 		return (0);
 	else
 		return (1);
@@ -69,7 +69,8 @@ int	find_wall_horiz(t_window *window, int i, int j)
 	y = (j + 1) / 40;
 	if (!facing_right(window, window->ray.start))
 		y = j / 40;
-	if (window->map[x][y] == '1')
+	// should truncate spaces in the end of each line in the map
+	if (window->map[x][y] && window->map[x][y] == '1')
 		return (0);
 	return (1);
 }
@@ -83,7 +84,7 @@ int	find_wall_vert(t_window *window, int i, int j)
 	y = j / 40;
 	if (!facing_right(window, window->ray.start))
 		y = (j - 40) / 40;
-	if (window->map[x][y] == '1')
+	if (window->map[x][y] && window->map[x][y] == '1')
 		return (0);
 	else
 		return (1);
@@ -109,7 +110,7 @@ void	minimap(char **map, t_window *window)
 			if (map[i][j] == '1')
 				draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, SKIN);
 			else if (ft_strchr(map[i][j], "0NSWE"))
-				draw_square( SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, BEIGE);
+				draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, BEIGE);
 			j++;
 		}
 		i++;

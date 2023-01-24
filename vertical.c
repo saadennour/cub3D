@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/21 16:15:00 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:08:30 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ int	vert_map_limits(t_window *window)
 	return (0);
 }
 
-void    wall_hit(t_window *window)
+void    wall_hit(t_window *window, int i)
 {
+	// (void)i;
     while (!hor_map_limits(window) && find_wall_horiz(window, window->ray.fh_y, window->ray.fh_x))
 	{
 		window->ray.fh_x += window->ray.horiz_x;
@@ -96,11 +97,13 @@ void    wall_hit(t_window *window)
 	{
 		window->ray.xray = window->ray.fv_x;
 		window->ray.yray = window->ray.fv_y;
+		window->ray.v_or_h[i] = 1;
 	}
 	else
 	{
 		window->ray.xray = window->ray.fh_x;
 		window->ray.yray = window->ray.fh_y;
+		window->ray.v_or_h[i] = 2;
 	}
 }
 
@@ -115,18 +118,21 @@ void    draw_rays(t_window *window)
 	step = FOV / NUMBER_OF_RAYS;
 	window->ray.xrays = malloc(sizeof(double) * NUMBER_OF_RAYS);
 	window->ray.yrays = malloc(sizeof(double) * NUMBER_OF_RAYS);
-	while (window->ray.start < window->ray.end)
+	window->ray.v_or_h = malloc(sizeof(int) * NUMBER_OF_RAYS);
+	// printf ("%f | %f | %f\n", window->ray.start, window->ray.end, step);
+	while (i < NUMBER_OF_RAYS)
 	{
 		first_horizental_step(window, window->ray.start);
 		first_vertical_step(window);
 		horizental_steps(window, window->ray.start);
 		vertical_steps(window, window->ray.start);
-		wall_hit(window);
+		wall_hit(window, i);
 		window->ray.xrays[i] = window->ray.xray;
 		window->ray.yrays[i] = window->ray.yray;
 		draw_line(window, SCALE_DOWN * window->y, SCALE_DOWN * window->x,
 			SCALE_DOWN * window->ray.xray, SCALE_DOWN * window->ray.yray);
 		window->ray.start += step;
 		i++;
+		// printf ("salam %d\n", i);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/21 16:13:43 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/23 21:02:58 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_rays
 	double	yray;
 	double	*xrays;
 	double	*yrays;
+	int		*v_or_h;
 	double	project_plane;
 	double	wallheight;
 }				t_rays;
@@ -94,6 +95,8 @@ typedef struct t_window
 {
 	t_rays	ray;
 	t_data	*px;
+	t_data	*north;
+	void	*north_img;
 	void	*mlx;
 	void	*win;
 	char	**map;
