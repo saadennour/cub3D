@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/25 14:51:13 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:58:26 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ double	ray_dis(t_window *window, double x, double y)
 	x1 = x - window->y;
 	y1 = y - window->x; 
 	return (sqrt((x1 * x1) + (y1 * y1)));
+}
+
+int	encode_rgb(int red, int green, int blue)
+{
+	return (red << 16 | green << 8 | blue);
 }
 
 void	draw_wall(t_window *window, int x)
@@ -50,7 +55,6 @@ void	draw_wall(t_window *window, int x)
 		else
 			color = get_pixel(texture, y_px, (int)window->ray.xrays[x]);
 		my_mlx_pixel_put(window->px, x, y_start, color);
-	//	my_mlx_pixel_put(window->px, x + 1, y_start, BRICK);
 		y_start++;
 	}
 }

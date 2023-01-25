@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 13:11:03 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:04:55 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	start_game(t_config *config)
 	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH , WINDOW_HEIGHT, "CUBE3D");
 	window.map = config->data;
 	window.rotation_angle = 0;
+	window.floor = config->colors->xfloor;
+	window.ceil = config->colors->xceil;
 	texture_init(config, &window);
-	// printf ("addr = %p\n", window.north->addr);
 	find_player(&window, config->data);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);

@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 14:42:29 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:03:29 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct t_colors
 {
 	int	floor[3];
 	int	ceiling[3];
+	int	xfloor;
+	int	xceil;
 }				t_colors;
 
 typedef struct t_config
@@ -125,6 +127,8 @@ typedef struct t_window
 	int			ydirection;
 	int			height;
 	int			width;
+	int			floor;
+	int			ceil;
 }				t_window;
 
 void		check_extension(char *filename);
@@ -181,5 +185,6 @@ int			find_wall_horiz(t_window *window, int i, int j);
 int			find_wall_vert(t_window *window, int i, int j);
 void		tree_d_drawing(t_window *window);
 int			get_pixel(t_texture *texture, int y, int x);
+int			encode_rgb(int red, int green, int blue);
 
 #endif
