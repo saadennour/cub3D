@@ -1,7 +1,7 @@
-NO wall.xpm
-SO wall.xpm
-WE wall.xpm
-EA wall.xpm
+NO stone.xpm
+SO stone.xpm
+WE brick.xpm
+EA stone.xpm
 
 F 220,100,12
 C 225,30,0
