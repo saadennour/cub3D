@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/26 16:37:34 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:09:53 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,49 @@ void	draw_wall(t_window *window, int x)
 	double	y_start;
 	double	y_end;
 	double	y, y_px;
-	t_texture	*texture;
-	t_texture	*texture2;
+	t_texture	*texture = NULL;
+	// t_texture	*texture2;
 	int	color;
 
 	y_start = (WINDOW_HEIGHT / 2) - (window->ray.wallheight / 2);
 	y_end = y_start + window->ray.wallheight;
 	y = y_start;
-	if (facing_down(window, window->ray.start))
-		texture = window->south;
-	else if (!facing_down(window, window->ray.start))
-		texture = window->north;
-	if (facing_right(window, window->ray.start))
-		texture2 = window->west;
-	else if (!facing_right(window, window->ray.start))
-		texture2 = window->east;
+	// if (facing_down(window, window->ray.start))
+	// 	texture = window->south;
+	// else
+	// 	texture = window->north;
+	// if (facing_right(window, window->ray.start))
+	// 	texture2 = window->east;
+	// else
+	// 	texture2 = window->west;
 	while (y_start < y_end)
 	{
-		y_px = (texture->height / window->ray.wallheight) * (y_start - y);
-		if (window->ray.v_or_h[x] == 1)
-			color = get_pixel(texture2, y_px, (int)window->ray.yrays[x]);
-		else
+		// y_px = (texture->height / window->ray.wallheight) * (y_start - y);
+		// printf ("salam\n");
+		if (window->ray.v_or_h[x] == 1 && facing_right(window, window->ray.start))
+		{
+			texture = window->east;
+			y_px = (texture->height / window->ray.wallheight) * (y_start - y);
+			color = get_pixel(texture, y_px, (int)window->ray.yrays[x]);
+		}
+		if (window->ray.v_or_h[x] == 1 && !facing_right(window, window->ray.start))
+		{
+			texture = window->west;
+			y_px = (texture->height / window->ray.wallheight) * (y_start - y);
+			color = get_pixel(texture, y_px, (int)window->ray.yrays[x]);
+		}
+		if (window->ray.v_or_h[x] == 2 && facing_down(window, window->ray.start))
+		{
+			texture = window->south;
+			y_px = (texture->height / window->ray.wallheight) * (y_start - y);
 			color = get_pixel(texture, y_px, (int)window->ray.xrays[x]);
+		}
+		if (window->ray.v_or_h[x] == 2 && !facing_down(window, window->ray.start))
+		{
+			texture = window->north;
+			y_px = (texture->height / window->ray.wallheight) * (y_start - y);
+			color = get_pixel(texture, y_px, (int)window->ray.xrays[x]);
+		}
 		my_mlx_pixel_put(window->px, x, y_start, color);
 		y_start++;
 	}

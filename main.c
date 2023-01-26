@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 15:03:09 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/26 19:41:29 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ int	main(int ac, char **av)
 			printf ("%d\n", config.colors->floor[i++]);
 		while (j < 3)
 			printf ("%d\n", config.colors->ceiling[j++]);
+		// i = 0;
+		// while (config.data[i])
+		// {
+		// 	// j = 0;
+		// 	// while (config.data[i][j])
+		// 	// {
+		// 		printf ("%s\n", config.data[i]);
+		// 	// 	j++;
+		// 	// }
+		// 	i++;
+		// }
 		start_game(&config);
 	}
 	else

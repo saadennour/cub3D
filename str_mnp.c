@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_mnp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:56 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/11 16:18:38 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/26 18:37:31 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int	tallest_line(char **map)
 	int	i;
 	int	len;
 
-	i = 6;
+	i = 0;
 	len = 0;
 	while (map[i])
 	{
