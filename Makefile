@@ -15,11 +15,12 @@ SRCS =	main.c	\
 		raycasting.c \
 		vertical.c \
 		wall_render.c \
+		texture.c \
 
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-		gcc $(FLAGS) $(SRCS) -o cub3D
+		gcc $(FLAGS) $(SRCS) -o cub3D #-fsanitize=address -g
 
 clean :
 		rm -rf $(NAME)

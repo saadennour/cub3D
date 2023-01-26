@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/22 19:48:59 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:36:56 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct t_colors
 {
 	int	floor[3];
 	int	ceiling[3];
+	int	xfloor;
+	int	xceil;
 }				t_colors;
 
 typedef struct t_config
@@ -86,32 +88,47 @@ typedef struct s_rays
 	double	yray;
 	double	*xrays;
 	double	*yrays;
+	int		*v_or_h;
 	double	project_plane;
 	double	wallheight;
 }				t_rays;
 
-typedef struct t_window
+typedef struct t_texture
 {
-	t_rays	ray;
-	t_data	*px;
-	void	*mlx;
-	void	*win;
-	char	**map;
+	t_data	*data;
 	void	*img;
-	int		x;
-	int		y;
-	int		wall_x;
-	int		wall_y;
-	int		player_size;
-	double	rotation_angle;
-	double	line_x;
-	double	line_y;
-	double	si;
-	double	co;
-	int		xdirection;
-	int		ydirection;
 	int		height;
 	int		width;
+}				t_texture;
+
+typedef struct t_window
+{
+	t_rays		ray;
+	t_data		*px;
+	t_texture	*north;
+	t_texture	*south;
+	t_texture	*east;
+	t_texture	*west;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	void		*img;
+	int			x;
+	int			y;
+	int			wall_x;
+	int			wall_y;
+	int			player_size;
+	double		rotation_angle;
+	double		line_x;
+	double		line_y;
+	double		si;
+	double		co;
+	int			xdirection;
+	int			ydirection;
+	int			height;
+	int			width;
+	int			floor;
+	int			ceil;
 }				t_window;
 
 void		check_extension(char *filename);
@@ -146,6 +163,7 @@ int			check_textures(t_config *config, char *file);
 void		find_player(t_window *window, char **map);
 int			find_wall(t_window *window, int i, int j);
 int			tallest_line(char **map);
+void		texture_init(t_config *config, t_window *window);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		start_game(t_config *config);
@@ -166,5 +184,7 @@ void    	draw_rays(t_window *window);
 int			find_wall_horiz(t_window *window, int i, int j);
 int			find_wall_vert(t_window *window, int i, int j);
 void		tree_d_drawing(t_window *window);
+int			get_pixel(t_texture *texture, int y, int x);
+int			encode_rgb(int red, int green, int blue);
 
 #endif

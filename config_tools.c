@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:38 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/16 19:09:46 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:02:02 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	set_colors(char *data, t_config *config, int i)
 		check_rgb(rgb, config);
 		while (++count < 3)
 			config->colors->floor[count] = ft_atoi(rgb[count]);
+		config->colors->xfloor = encode_rgb(config->colors->floor[0], config->colors->floor[1], config->colors->floor[2]);
 		free_2darray (rgb);
 		return (32);
 	}
@@ -91,6 +92,7 @@ int	set_colors(char *data, t_config *config, int i)
 		check_rgb(rgb, config);
 		while (++count < 3)
 			config->colors->ceiling[count] = ft_atoi(rgb[count]);
+		config->colors->xceil = encode_rgb(config->colors->ceiling[0], config->colors->ceiling[1], config->colors->ceiling[2]);
 		free_2darray (rgb);
 		return (64);
 	}
