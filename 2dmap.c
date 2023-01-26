@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 16:43:31 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/26 19:57:10 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void	minimap(char **map, t_window *window)
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
 	window->player_size = TILE_SIZE;
 	window->ray.project_plane = (WINDOW_WIDTH / 2) / tan(FOV / 2);
+	// draw_floor(window);
+	// draw_ceiling(window);
+	// tree_d_drawing(window);
 	while (map[i])
 	{
 		j = 0;
@@ -118,8 +121,5 @@ void	minimap(char **map, t_window *window)
 	window->player_size = SCALE_DOWN * 10;
 	draw_player(window->y, window->x, window, RED);
 	draw_rays(window);
-	draw_floor(window);
-	draw_ceiling(window);
-	tree_d_drawing(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
 }
