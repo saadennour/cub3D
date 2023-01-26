@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 15:04:55 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 16:52:48 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	start_game(t_config *config)
 	find_player(&window, config->data);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
+	mlx_hook(window.win, 4, 1L << 2, just_a_func, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);
 	mlx_loop(window.mlx);
 }
@@ -54,6 +55,30 @@ void	round_angles(t_window *window)
 	if ((sin(window->rotation_angle) > 0 && sin(window->rotation_angle) < 0.01)
 		|| (sin(window->rotation_angle) < 0 && sin(window->rotation_angle) > -0.01))
 		window->si = 0;
+}
+
+int	just_a_func(int button, int x, int y, t_window *window)
+{
+	// mlx_destroy_image(window->mlx, window->img);
+	(void)x;
+	(void)y;
+	if (button == 2)
+	{
+		window->rotation_angle += 2 * M_PI / 180;
+		if (window->ray.start >= 2.0 * M_PI)
+			window->rotation_angle -= 2.0 * M_PI;
+		minimap(window->map, window);
+	}
+	else if (button == 1)
+	{
+		window->rotation_angle -= 2 * M_PI / 180;
+		if (window->ray.start <= 0.0)
+			window->rotation_angle += 2.0 * M_PI;
+		minimap(window->map, window);
+	}
+	else
+		minimap(window->map, window);
+	return (0);
 }
 
 int	key_hook(int keycode, t_window *window)

@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/25 15:16:33 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/25 16:34:49 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ void	draw_player(double x, double y, t_window *window, int color)
 	(void)x;
 	(void)y;
 	(void)color;
-	draw_rays(window);
+	// draw_rays(window);
 	draw_square(SCALE_DOWN * (x - 5), SCALE_DOWN * (y - 5), window, color);
-	draw_floor(window);
-	draw_ceiling(window);
-	tree_d_drawing(window);
+	// draw_floor(window);
+	// draw_ceiling(window);
+	// tree_d_drawing(window);
 }
