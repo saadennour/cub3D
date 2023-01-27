@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/26 19:55:28 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 19:39:31 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,18 @@ int	encode_rgb(int red, int green, int blue)
 
 void	draw_wall(t_window *window, int x)
 {
-	double	y_start;
-	double	y_end;
-	double	y, y_px;
-	t_texture	*texture = NULL;
-	// t_texture	*texture2;
-	int	color;
+	double		y_start;
+	double		y_end;
+	double		y, y_px;
+	t_texture	*texture;
+	int			color;
 
+	texture = NULL;
 	y_start = (WINDOW_HEIGHT / 2) - (window->ray.wallheight / 2);
 	y_end = y_start + window->ray.wallheight;
 	y = y_start;
-	// if (facing_down(window, window->ray.start))
-	// 	texture = window->south;
-	// else
-	// 	texture = window->north;
-	// if (facing_right(window, window->ray.start))
-	// 	texture2 = window->east;
-	// else
-	// 	texture2 = window->west;
 	while (y_start < y_end)
 	{
-		// y_px = (texture->height / window->ray.wallheight) * (y_start - y);
-		// printf ("salam\n");
 		if (window->ray.v_or_h[x] == 1 && facing_right(window, window->ray.start))
 		{
 			texture = window->east;
