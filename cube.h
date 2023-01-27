@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/26 19:57:18 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:22:11 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
 # define NUMBER_OF_RAYS	1366
-# define SCALE_DOWN		1
+# define SCALE_DOWN		0.2
 # define TILE_SIZE		40
 # define WINDOW_WIDTH 	1366
 # define WINDOW_HEIGHT 	768
