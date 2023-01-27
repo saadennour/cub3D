@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 13:27:14 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:36:28 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	find_player(t_window *window, char **map)
 				else if (map[x][y] == 'S')
 					window->rotation_angle = M_PI / 2;
 				else if (map[x][y] == 'W')
-					window->rotation_angle = M_PI;
+					window->rotation_angle = 0;
 				window->x = (x - 6) * 40 + 15;
 				window->y = y * 40 + 15;
 			}
@@ -93,10 +93,10 @@ int	find_wall_vert(t_window *window, int i, int j)
 
 void	minimap(char **map, t_window *window)
 {
-	int	i;
-	int	j;
+	// int	i;
+	// int	j;
 
-	i = 6;
+	// i = 6;
 	window->img = mlx_new_image(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	window->px = malloc(sizeof(t_data));
 	window->px->addr = mlx_get_data_addr(window->img, &window->px->bits_per_pixel, &window->px->line_length, &window->px->endian);
@@ -106,20 +106,21 @@ void	minimap(char **map, t_window *window)
 	draw_floor(window);
 	draw_ceiling(window);
 	tree_d_drawing(window);
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == '1')
-				draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, SKIN);
-			else if (ft_strchr(map[i][j], "0NSWE"))
-				draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, BEIGE);
-			j++;
-		}
-		i++;
-	}
+	// while (map[i])
+	// {
+	// 	j = 0;
+	// 	while (map[i][j])
+	// 	{
+	// 		if (map[i][j] == '1')
+	// 			draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, SKIN);
+	// 		else if (ft_strchr(map[i][j], "0NSWE"))
+	// 			draw_square(SCALE_DOWN * (j * TILE_SIZE), SCALE_DOWN * (i - 6) * TILE_SIZE, window, BEIGE);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	window->player_size = SCALE_DOWN * 10;
-	draw_player(window->y, window->x, window, RED);
+	//draw_player(window->y, window->x, window, RED);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
+	draw_minimap(map, window);
 }

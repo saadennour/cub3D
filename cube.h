@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 13:27:25 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:14:38 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_minimap {
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	
+}				t_minimap;
 
 typedef struct s_rays
 {
@@ -167,6 +178,7 @@ void		texture_init(t_config *config, t_window *window);
 int			just_a_func(int button, int x, int y, t_window *window);
 
 // DRAWING THE MAP AND ITS COMPONENTS
+void		draw_minimap(char **map, t_window *window);
 void		start_game(t_config *config);
 void		draw_square(int x, int y, t_window *window, int color);
 void		minimap(char **map, t_window *window);

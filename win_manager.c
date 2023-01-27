@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/26 19:02:41 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:22:11 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ void	start_game(t_config *config)
 	window.width = 40 * tallest_line(&config->data[6]);
 	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH , WINDOW_HEIGHT, "CUBE3D");
 	window.map = config->data;
-	window.rotation_angle = 0;
+	window.rotation_angle = M_PI;
 	window.floor = config->colors->xfloor;
 	window.ceil = config->colors->xceil;
 	texture_init(config, &window);
 	find_player(&window, config->data);
+	//draw_minimap(&config->data[6], &window);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
-	mlx_hook(window.win, 4, 1L << 2, just_a_func, &window);
+	mlx_mouse_hook(window.win, just_a_func, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);
 	mlx_loop(window.mlx);
 }
