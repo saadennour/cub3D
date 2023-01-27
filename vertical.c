@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:26:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/26 18:50:09 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:29:25 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ void    wall_hit(t_window *window, int i)
 		window->ray.xray = window->ray.fh_x;
 		window->ray.yray = window->ray.fh_y;
 		window->ray.v_or_h[i] = 2;
+	}
+	if (window->ray.vert_distance == window->ray.horiz_distance)
+	{
+		window->ray.xray = trunc(window->ray.xray);
+		window->ray.yray = trunc(window->ray.yray);
 	}
 }
 

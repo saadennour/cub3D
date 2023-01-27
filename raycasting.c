@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:14:44 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/26 18:50:02 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/26 21:09:46 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void draw_line(t_window *window, int x, int y, int endX, int endY)
 	double pixelY = y;
 	while (pixels)
 	{
-		if (pixelX >= window->width || pixelY >= window->height || pixelX <= 0 || pixelY <= 0)
+		if (pixelX >= WINDOW_WIDTH || pixelY >= WINDOW_HEIGHT || pixelX <= 0 || pixelY <= 0)
 			break ;
 		my_mlx_pixel_put(window->px, pixelX, pixelY, YELLOW);
 		pixelX += deltaX;

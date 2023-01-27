@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 15:17:22 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 19:47:53 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	start_game(t_config *config)
 	window.ceil = config->colors->xceil;
 	texture_init(config, &window);
 	find_player(&window, config->data);
+	//draw_minimap(&config->data[6], &window);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
-	mlx_hook(window.win, 4, 1L << 2, just_a_func, &window);
+	mlx_mouse_hook(window.win, just_a_func, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);
 	mlx_loop(window.mlx);
 }

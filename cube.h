@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 16:19:24 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 19:47:07 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define LEFT_ARROW		123
 # define RIGHT_ARROW	124
 # define NUMBER_OF_RAYS	1366
-# define SCALE_DOWN		0.2
+# define SCALE_DOWN		0.1
 # define TILE_SIZE		40
 # define WINDOW_WIDTH 	1366
 # define WINDOW_HEIGHT 	768
@@ -69,6 +69,17 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_minimap {
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	
+}				t_minimap;
 
 typedef struct s_rays
 {
@@ -168,6 +179,7 @@ int			just_a_func(int button, int x, int y, t_window *window);
 void		clear_data(char **file);
 
 // DRAWING THE MAP AND ITS COMPONENTS
+void		draw_minimap(char **map, t_window *window);
 void		start_game(t_config *config);
 void		draw_square(int x, int y, t_window *window, int color);
 void		minimap(char **map, t_window *window);
