@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 13:22:02 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:30:40 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	find_player(t_window *window, char **map)
 				else if (map[x][y] == 'S')
 					window->rotation_angle = M_PI / 2;
 				else if (map[x][y] == 'W')
-					window->rotation_angle = M_PI;
+					window->rotation_angle = 0;
 				window->x = (x - 6) * 40 + 15;
 				window->y = y * 40 + 15;
 			}

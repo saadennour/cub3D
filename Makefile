@@ -16,6 +16,7 @@ SRCS =	main.c	\
 		vertical.c \
 		wall_render.c \
 		texture.c \
+		useful_tools.c \
 
 all : $(NAME)
 

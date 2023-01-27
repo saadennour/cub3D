@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 13:22:11 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:19:24 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ int			find_wall(t_window *window, int i, int j);
 int			tallest_line(char **map);
 void		texture_init(t_config *config, t_window *window);
 int			just_a_func(int button, int x, int y, t_window *window);
+void		clear_data(char **file);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		start_game(t_config *config);

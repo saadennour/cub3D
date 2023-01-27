@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:49 by sfarhan           #+#    #+#             */
-/*   Updated: 2022/12/16 18:26:52 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:37:06 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	check_rgb(char **rgb, t_config *config)
 		handle_error(config);
 	while (rgb[++i])
 	{
-		j = 0;
+		clear_data(rgb);
+		j = whitesp_loop(rgb[i], 0);
 		while (rgb[i][j])
 		{
 			if (!ft_isdigit(rgb[i][j]))
@@ -54,7 +55,8 @@ void	check_rgb(char **rgb, t_config *config)
 			}
 			j++;
 		}
-		degree = ft_atoi(rgb[i]);
+		j = whitesp_loop(rgb[i], 0);
+		degree = ft_atoi(&rgb[i][j]);
 		if (degree < 0 || degree > 255)
 		{
 			free_2darray(rgb);

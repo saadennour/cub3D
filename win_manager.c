@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/26 19:02:41 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:17:22 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	start_game(t_config *config)
 	window.width = 40 * tallest_line(&config->data[6]);
 	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH , WINDOW_HEIGHT, "CUBE3D");
 	window.map = config->data;
-	window.rotation_angle = 0;
+	window.rotation_angle = M_PI;
 	window.floor = config->colors->xfloor;
 	window.ceil = config->colors->xceil;
 	texture_init(config, &window);
@@ -59,7 +59,7 @@ void	round_angles(t_window *window)
 
 int	just_a_func(int button, int x, int y, t_window *window)
 {
-	// mlx_destroy_image(window->mlx, window->img);
+	mlx_destroy_image(window->mlx, window->img);
 	(void)x;
 	(void)y;
 	if (button == 2)

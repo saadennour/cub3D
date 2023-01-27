@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:38 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 15:02:02 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:40:55 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	**getdata(int fd)
 	}
 	file = ft_split(data, '\n');
 	free (data);
+	clear_data(file);
 	return (file);
 }
 
