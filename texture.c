@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:08:53 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/25 14:42:10 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:23:23 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	get_pixel(t_texture *texture, int y, int x)
 {
 	char	*dst;
 
-	if (x < 0 || x >= WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
-		return 0;
+	// if (x < 0 || x >= WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
+	// 	return 0;
 	dst = texture->data->addr + (int)(y * texture->data->line_length) + x % TILE_SIZE * (texture->data->bits_per_pixel / 8);
 	return (*(int*)dst);
 }
