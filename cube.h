@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 16:40:41 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:14:16 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define SKIN			0XE9967A
 # define RED			0XFF0000
 # define YELLOW			0XFDF4A4
-# define BRICK			0XAA4A44
 # define W				13
 # define A				0
 # define S				1
@@ -65,14 +64,14 @@ typedef struct t_config
 	t_idpaths	*idpaths;
 }				t_config;
 
-typedef struct	s_data {
+typedef struct s_data {
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_data;
 
-typedef struct	s_minimap {
+typedef struct s_minimap {
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -80,7 +79,6 @@ typedef struct	s_minimap {
 	void	*mlx;
 	void	*win;
 	void	*img;
-	
 }				t_minimap;
 
 typedef struct s_rays
@@ -178,6 +176,7 @@ int			find_wall(t_window *window, int i, int j);
 int			tallest_line(char **map);
 void		texture_init(t_config *config, t_window *window);
 int			just_a_func(int button, int x, int y, t_window *window);
+void		clear_data(char **file);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);
@@ -190,12 +189,12 @@ void		line(double x, double y, t_window *window, int color);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			facing_right(t_window *window, double angle);
 int			facing_down(t_window *window, double angle);
-void 		draw_line(t_window *window, int x, int y, int endX, int endY);
-void	    first_vertical_step(t_window *window);
-void	    vertical_steps(t_window *window, double angle);
+void		draw_line(t_window *window, int x, int y, int endX, int endY);
+void		first_vertical_step(t_window *window);
+void		vertical_steps(t_window *window, double angle);
 void		first_horizental_step(t_window *window, double angle);
 void		horizental_steps(t_window *window, double angle);
-void    	draw_rays(t_window *window);
+void		draw_rays(t_window *window);
 int			find_wall_horiz(t_window *window, int i, int j);
 int			find_wall_vert(t_window *window, int i, int j);
 void		tree_d_drawing(t_window *window);

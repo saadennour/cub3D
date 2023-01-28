@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 15:22:11 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:47:53 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	round_angles(t_window *window)
 
 int	just_a_func(int button, int x, int y, t_window *window)
 {
-	// mlx_destroy_image(window->mlx, window->img);
+	mlx_destroy_image(window->mlx, window->img);
 	(void)x;
 	(void)y;
 	if (button == 2)

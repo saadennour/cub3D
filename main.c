@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 14:56:02 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:47:17 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,16 @@ int	main(int ac, char **av)
 		printf ("%s\n", config.idpaths->east_path);
 		printf ("%s\n", config.idpaths->west_path);
 		while (i < 3)
-			printf ("%d\n", config.colors->floor[i++]);
+			printf ("%d|\n", config.colors->floor[i++]);
 		while (j < 3)
-			printf ("%d\n", config.colors->ceiling[j++]);
-		// i = 0;
-		// while (config.data[i])
-		// {
-		// 	// j = 0;
-		// 	// while (config.data[i][j])
-		// 	// {
-		// 		printf ("%s\n", config.data[i]);
-		// 	// 	j++;
-		// 	// }
-		// 	i++;
-		// }
+			printf ("%d|\n", config.colors->ceiling[j++]);
+		i = 0;
+		while (config.data[i])
+		{
+			printf ("%s|\n", config.data[i]);
+			i++;
+		}
+		// system("leaks cub3D");
 		start_game(&config);
 	}
 	else
