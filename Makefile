@@ -18,6 +18,7 @@ SRCS =	main.c	\
 		texture.c \
 		useful_tools.c \
 		draw_minimap.c \
+		str_mnp_2.c \
 
 all : $(NAME)
 

@@ -1,7 +1,7 @@
-NO stone.xpm
-SO brick.xpm
-WE brick.xpm
-EA stone.xpm
+NO textures/stone.xpm
+SO textures/brick.xpm
+WE textures/brick.xpm
+EA textures/stone.xpm
 
 F 255,255,255
 C 50,50,130
