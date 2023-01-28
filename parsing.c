@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 06:48:19 by saadennour        #+#    #+#             */
-/*   Updated: 2022/12/24 13:21:24 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/28 21:53:38 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,16 @@ void	check_walls(t_config *config)
 	}
 }
 
-void	check_extension(char *filename)
+void	check_extension(char *filename, char *extension)
 {
 	int	i;
 
 	i = ft_strlen(filename) - 1;
 	while (filename[i] != '.')
 		i--;
-	if (ft_strcmp(&filename[i], ".cub"))
+	if (ft_strcmp(&filename[i], extension))
 	{
-		printf ("Error : Filename doesn't end with .cub extension\n");
+		printf ("Error : Filename doesn't end with %s extension\n", extension);
 		exit (0);
 	}
 }

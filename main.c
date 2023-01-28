@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 19:47:17 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/28 21:54:04 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		check_extension(av[1]);
+		check_extension(av[1], ".cub");
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)
 		{

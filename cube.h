@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 20:14:16 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/28 22:11:40 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct t_window
 	int			ceil;
 }				t_window;
 
-void		check_extension(char *filename);
+void		check_extension(char *filename, char *extension);
 t_config	get_config(int fd);
 char		*get_next_line(int fd);
 char		**getdata(int fd);
@@ -177,6 +177,11 @@ int			tallest_line(char **map);
 void		texture_init(t_config *config, t_window *window);
 int			just_a_func(int button, int x, int y, t_window *window);
 void		clear_data(char **file);
+int			north_south(char *data, t_config *config, int i);
+int			west_east(char *data, t_config *config, int i);
+int			floor_color(t_config *config, char **rgb);
+int			ceiling_color(t_config *config, char **rgb);
+
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);

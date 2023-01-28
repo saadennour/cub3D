@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:08:53 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 16:08:25 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/28 21:54:46 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int	check_textures(t_config *config, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		handle_error(config);
+	check_extension(file, ".xpm");
 	return (0);
 }

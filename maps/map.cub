@@ -1,3 +1,4 @@
+
 NO textures/stone.xpm
 SO textures/brick.xpm
 WE textures/brick.xpm
@@ -5,7 +6,6 @@ EA textures/stone.xpm
 
 F 255,255,255
 C 50,50,130
-
 
         1111111111111111111111111
         1000000000110000000000001
