@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:43:24 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/29 15:16:43 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:04:44 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,6 @@ void	my_map_mlx_pixel_put(t_minimap *mini, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_mini_square(int x, int y, t_window *window, t_minimap *mini, int color)
-{
-	int	square_x;
-	int	square_y;
-	int	temp_x;
-
-	square_x = (x + window->player_size);
-	square_y = (y + window->player_size);
-	temp_x = x;
-	while (y <= square_y)
-	{
-		x = temp_x;
-		while (x <= square_x)
-		{
-			my_map_mlx_pixel_put(mini, x, y, color);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	innit_minimap(t_window *window, t_minimap *mini)
 {
 	mini->img = mlx_new_image(window->mlx, WINDOW_WIDTH / 5, WINDOW_HEIGHT / 4);
@@ -52,38 +31,27 @@ void	innit_minimap(t_window *window, t_minimap *mini)
 
 void	zoom_in(t_window *window, t_minimap *mini, char **map)
 {
-	int	y_start;
-	int	y_end;
-	int	x_start;
-	int	x_end;
-	int	y = 0;
-	int x;
-
-	x_start = (window->y / 40) - (WINDOW_WIDTH / 5 / 2 / 40);
-	x_end = ((window->y / 40) + (WINDOW_WIDTH / 5 / 2 / 40));
-	y_start = ((window->x / 40) - (WINDOW_HEIGHT / 4 / 2 / 40));
-	y_end = ((window->x / 40) + (WINDOW_HEIGHT / 4 / 2 / 40));
-	window->player_size = TILE_SIZE;
-	while (map[y_start] && y_start <= y_end)
+	while (map[mini->y_start] && mini->y_start <= mini->y_end)
 	{
-		x = 0;
-		x_start = (window->y / 40) - (WINDOW_WIDTH / 5 / 2 / 40);
-		while (x_start <= x_end)
+		mini->x = 0;
+		mini->x_start = (window->y / 40) - (WINDOW_WIDTH / 5 / 2 / 40);
+		while (mini->x_start <= mini->x_end)
 		{
-			if (map[y_start][x_start] && map[y_start][x_start] == '1')
-				draw_mini_square(x * 40, y * 40, window, mini, SKIN);
-			else if (map[y_start][x_start]
-				&& ft_strchr(map[y_start][x_start], "0NSWE"))
-				draw_mini_square(x * 40, y * 40, window, mini, BEIGE);
-			x_start++;
-			x++;
+			if (map[mini->y_start][mini->x_start]
+				&& map[mini->y_start][mini->x_start] == '1')
+				draw_mini_square(mini->x * 40, mini->y * 40, mini, SKIN);
+			else if (map[mini->y_start][mini->x_start]
+				&& ft_strchr(map[mini->y_start][mini->x_start], "0NSWE"))
+				draw_mini_square(mini->x * 40, mini->y * 40, mini, BEIGE);
+			mini->x_start++;
+			mini->x++;
 		}
-		y_start++;
-		y++;
+		mini->y_start++;
+		mini->y++;
 	}
 }
 
-void	draw_background( t_minimap *mini)
+void	draw_background(t_minimap *mini)
 {
 	int	x;
 	int	y;
@@ -107,11 +75,11 @@ void	draw_minimap(char **map, t_window *window)
 	t_minimap	mini;
 
 	innit_minimap(window, &mini);
-	window->player_size = TILE_SIZE;
+	mini.player_size = TILE_SIZE;
 	draw_background(&mini);
+	minimap_cordinates(window, &mini);
 	zoom_in(window, &mini, map);
-	window->player_size = 10;
-	draw_mini_square(WINDOW_WIDTH / 5 / 2, WINDOW_HEIGHT / 4 / 2,
-		window, &mini, RED);
+	mini.player_size = 10;
+	draw_mini_square(WINDOW_WIDTH / 5 / 2, WINDOW_HEIGHT / 4 / 2, &mini, RED);
 	mlx_put_image_to_window(window->mlx, window->win, mini.img, 0, 0);
 }
