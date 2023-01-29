@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:55:43 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/29 16:04:57 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 20:45:07 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@ void	minimap_cordinates(t_window *window, t_minimap *mini)
 	mini->y_start = ((window->x / 40) - (WINDOW_HEIGHT / 4 / 2 / 40));
 	mini->y_end = ((window->x / 40) + (WINDOW_HEIGHT / 4 / 2 / 40));
 	mini->y = 0;
+}
+
+void	draw_weapon(t_window *window)
+{
+	int	x;
+	int	y;
+
+	x = WINDOW_WIDTH - (WINDOW_WIDTH / 2.7);
+	y = WINDOW_HEIGHT - (WINDOW_HEIGHT / 2.6);
+	mlx_put_image_to_window(window->mlx, window->win,
+		window->weapon->img, x, y);
 }
