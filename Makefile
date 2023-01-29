@@ -23,6 +23,7 @@ SRCS =	main.c	\
 		extra_functions.c \
 		more_extra_functions.c \
 		map_config.c \
+		minimap_innit.c \
 
 all : $(NAME)
 

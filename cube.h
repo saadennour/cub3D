@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 18:19:31 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 18:57:55 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ typedef struct s_minimap {
 	void	*mlx;
 	void	*win;
 	void	*img;
+	int		player_size;
+	int		y_start;
+	int		y_end;
+	int		x_start;
+	int		x_end;
+	int		y;
+	int		x;
 }				t_minimap;
 
 typedef struct s_rays
@@ -215,6 +222,8 @@ int			get_pixel(t_texture *texture, int y, int x);
 int			encode_rgb(int red, int green, int blue);
 void		draw_floor(t_window *window);
 void		draw_ceiling(t_window *window);
-//void		wall_hit(t_window *window, int i);
+void		draw_mini_square(int x, int y, t_minimap *mini, int color);
+void		my_map_mlx_pixel_put(t_minimap *mini, int x, int y, int color);
+void		minimap_cordinates(t_window *window, t_minimap *mini);
 
 #endif
