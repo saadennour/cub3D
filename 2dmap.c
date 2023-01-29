@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 22:36:12 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 15:17:31 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 20:35:10 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ void	minimap(char **map, t_window *window)
 	draw_ceiling(window);
 	tree_d_drawing(window);
 	mlx_put_image_to_window(window->mlx, window->win, window->img, 0, 0);
+	draw_weapon(window);
 	draw_minimap(&map[6], window);
 }

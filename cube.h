@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 21:35:19 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 21:42:35 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,7 @@ int			vert_map_limits(t_window *window);
 void		right_ray(t_window *window, int i);
 void		find_distance(t_window *window);
 void		only_rgb(t_config *config, char *data, int i, int start);
-int			check_emptyline(char *data);
-int			check_ifallone(char *data);
-int			check_previous(char *data);
+void		eol_to_space(char **file);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);
@@ -227,5 +225,6 @@ void		draw_ceiling(t_window *window);
 void		draw_mini_square(int x, int y, t_minimap *mini, int color);
 void		my_map_mlx_pixel_put(t_minimap *mini, int x, int y, int color);
 void		minimap_cordinates(t_window *window, t_minimap *mini);
+void		draw_weapon(t_window *window);
 
 #endif
