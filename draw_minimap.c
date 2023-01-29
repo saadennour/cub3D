@@ -6,26 +6,26 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:43:24 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/28 20:11:48 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:16:43 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube.h"
+#include "cube.h"
 
 void	my_map_mlx_pixel_put(t_minimap *mini, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= MINIMAP_WIDTH || y < 0 || y >= MINIMAP_HEIGHT)
+	if (x < 0 || x >= WINDOW_WIDTH / 5 || y < 0 || y >= WINDOW_HEIGHT / 4)
 		return ;
 	dst = mini->addr + (y * mini->line_length + x * (mini->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	draw_mini_square(int x, int y, t_window *window, t_minimap *mini, int color)
 {
-	int square_x;
-	int square_y;
+	int	square_x;
+	int	square_y;
 	int	temp_x;
 
 	square_x = (x + window->player_size);
@@ -45,8 +45,9 @@ void	draw_mini_square(int x, int y, t_window *window, t_minimap *mini, int color
 
 void	innit_minimap(t_window *window, t_minimap *mini)
 {
-	mini->img = mlx_new_image(window->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
-	mini->addr = mlx_get_data_addr(mini->img, &mini->bits_per_pixel, &mini->line_length, &mini->endian);
+	mini->img = mlx_new_image(window->mlx, WINDOW_WIDTH / 5, WINDOW_HEIGHT / 4);
+	mini->addr = mlx_get_data_addr(mini->img, &mini->bits_per_pixel,
+			&mini->line_length, &mini->endian);
 }
 
 void	zoom_in(t_window *window, t_minimap *mini, char **map)
@@ -58,20 +59,21 @@ void	zoom_in(t_window *window, t_minimap *mini, char **map)
 	int	y = 0;
 	int x;
 
-	x_start = (window->y / 40) - (MINIMAP_WIDTH / 2 / 40);
-	x_end = ((window->y / 40) + (MINIMAP_WIDTH / 2 / 40)) ;
-	y_start = ((window->x / 40) - (MINIMAP_HEIGHT / 2 / 40));
-	y_end = ((window->x / 40) + (MINIMAP_HEIGHT / 2 / 40));
+	x_start = (window->y / 40) - (WINDOW_WIDTH / 5 / 2 / 40);
+	x_end = ((window->y / 40) + (WINDOW_WIDTH / 5 / 2 / 40));
+	y_start = ((window->x / 40) - (WINDOW_HEIGHT / 4 / 2 / 40));
+	y_end = ((window->x / 40) + (WINDOW_HEIGHT / 4 / 2 / 40));
 	window->player_size = TILE_SIZE;
 	while (map[y_start] && y_start <= y_end)
 	{
 		x = 0;
-		x_start = (window->y / 40) - (MINIMAP_WIDTH / 2 / 40);
+		x_start = (window->y / 40) - (WINDOW_WIDTH / 5 / 2 / 40);
 		while (x_start <= x_end)
 		{
 			if (map[y_start][x_start] && map[y_start][x_start] == '1')
 				draw_mini_square(x * 40, y * 40, window, mini, SKIN);
-			else if (map[y_start][x_start] && ft_strchr(map[y_start][x_start], "0NSWE"))
+			else if (map[y_start][x_start]
+				&& ft_strchr(map[y_start][x_start], "0NSWE"))
 				draw_mini_square(x * 40, y * 40, window, mini, BEIGE);
 			x_start++;
 			x++;
@@ -83,15 +85,15 @@ void	zoom_in(t_window *window, t_minimap *mini, char **map)
 
 void	draw_background( t_minimap *mini)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	x = 0;
-	while (y <= MINIMAP_HEIGHT)
+	while (y <= WINDOW_HEIGHT / 4)
 	{
 		x = 0;
-		while (x <= MINIMAP_WIDTH)
+		while (x <= WINDOW_WIDTH / 5)
 		{
 			my_map_mlx_pixel_put(mini, x, y, SKIN);
 			x++;
@@ -102,13 +104,14 @@ void	draw_background( t_minimap *mini)
 
 void	draw_minimap(char **map, t_window *window)
 {
-	t_minimap mini;
+	t_minimap	mini;
 
 	innit_minimap(window, &mini);
 	window->player_size = TILE_SIZE;
 	draw_background(&mini);
 	zoom_in(window, &mini, map);
-	window->player_size =  10;
-	draw_mini_square(MINIMAP_WIDTH / 2, MINIMAP_HEIGHT / 2, window, &mini, RED);
+	window->player_size = 10;
+	draw_mini_square(WINDOW_WIDTH / 5 / 2, WINDOW_HEIGHT / 4 / 2,
+		window, &mini, RED);
 	mlx_put_image_to_window(window->mlx, window->win, mini.img, 0, 0);
 }

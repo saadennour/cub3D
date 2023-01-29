@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/27 19:47:53 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 14:49:27 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	start_game(t_config *config)
 {
 	t_window	window;
-	
+
 	window.mlx = mlx_init();
 	window.height = 40 * line_counter(&config->data[6]);
 	window.width = 40 * tallest_line(&config->data[6]);
-	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH , WINDOW_HEIGHT, "CUBE3D");
+	window.win = mlx_new_window(window.mlx, WINDOW_WIDTH,
+			WINDOW_HEIGHT, "CUBE3D");
 	window.map = config->data;
 	window.rotation_angle = M_PI;
 	window.floor = config->colors->xfloor;
 	window.ceil = config->colors->xceil;
 	texture_init(config, &window);
 	find_player(&window, config->data);
-	//draw_minimap(&config->data[6], &window);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
 	mlx_mouse_hook(window.win, just_a_func, &window);
@@ -51,10 +51,12 @@ void	round_angles(t_window *window)
 	else
 		window->si = floor(window->si);
 	if ((cos(window->rotation_angle) > 0 && cos(window->rotation_angle) < 0.01)
-		|| (cos(window->rotation_angle) < 0 && cos(window->rotation_angle) > -0.01))
+		|| (cos(window->rotation_angle) < 0
+			&& cos(window->rotation_angle) > -0.01))
 		window->co = 0;
 	if ((sin(window->rotation_angle) > 0 && sin(window->rotation_angle) < 0.01)
-		|| (sin(window->rotation_angle) < 0 && sin(window->rotation_angle) > -0.01))
+		|| (sin(window->rotation_angle) < 0
+			&& sin(window->rotation_angle) > -0.01))
 		window->si = 0;
 }
 
@@ -89,80 +91,11 @@ int	key_hook(int keycode, t_window *window)
 
 	x = window->x;
 	y = window->y;
-	if (keycode == 53)
-		shut(window);
-	mlx_destroy_image(window->mlx, window->img);
-	if (keycode == RIGHT_ARROW)
-	{
-		window->rotation_angle += 2 * M_PI / 180;
-		if (window->ray.start >= 2.0 * M_PI)
-			window->rotation_angle -= 2.0 * M_PI;
-		minimap(window->map, window);
-	}
-	if (keycode == LEFT_ARROW)
-	{
-		window->rotation_angle -= 2 * M_PI / 180;
-		if (window->ray.start <= 0.0)
-			window->rotation_angle += 2.0 * M_PI;
-		minimap(window->map, window);	
-	}
-	if (keycode == A)
-	{
-		window->si = (sin(window->rotation_angle) * 5);
-		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
-		x -= window->co;
-		y -= window->si;
-		if (find_wall(window, x, y) == 1)
-		{
-			window->x = x;
-			window->y = y;
-		}
-		minimap(window->map, window);
-	}
-	if (keycode == S)
-	{
-		window->si = (sin(window->rotation_angle) * 5);
-		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
-		x -= window->si;
-		y += window->co;
-		if (find_wall(window, x, y) == 1)
-		{
-			window->x = x;
-			window->y = y;
-		}
-		minimap(window->map, window);
-	}
-	if (keycode == D)
-	{
-		window->si = (sin(window->rotation_angle) * 5);
-		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
-		x += window->co;
-		y += window->si;
-		if (find_wall(window, x, y) == 1)
-		{
-			window->x = x;
-			window->y = y;
-		}
-		minimap(window->map, window);
-	}
-	if (keycode == W)
-	{
-		window->si = (sin(window->rotation_angle) * 5);
-		window->co = (cos(window->rotation_angle) * 5);
-		round_angles(window);
-		x += window->si;
-		y -= window->co;
-		if (find_wall(window, x, y) == 1)
-		{
-			window->x = x;
-			window->y = y;
-		}
-		minimap(window->map, window);
-	}
-	else
-		minimap(window->map, window);
+	arrow_movement(keycode, window);
+	moving_left(keycode, window);
+	moving_right(keycode, window);
+	moving_up(keycode, window);
+	moving_down(keycode, window);
+	minimap(window->map, window);
 	return (0);
 }

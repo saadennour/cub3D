@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/28 16:40:24 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:11:29 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	tree_d_drawing(t_window *window)
 	double	ray_distance;
 
 	i = 0;
-	window->ray.start = window->rotation_angle - (FOV / 2);
+	window->ray.start = window->rotation_angle - (window->fov / 2);
 	while (i < NUMBER_OF_RAYS)
 	{
 		ray_distance = ray_dis(window, window->ray.xrays[i],
@@ -84,6 +84,6 @@ void	tree_d_drawing(t_window *window)
 			* window->ray.project_plane;
 		draw_wall(window, i);
 		i++;
-		window->ray.start += FOV / NUMBER_OF_RAYS;
+		window->ray.start += window->fov / NUMBER_OF_RAYS;
 	}
 }

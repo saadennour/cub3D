@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 22:11:40 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:12:18 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <mlx.h>
 //# include "mlx/mlx.h"
 
-# define FOV			60 * M_PI / 180
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
 # define RED			0XFF0000
@@ -38,8 +37,6 @@
 # define TILE_SIZE		40
 # define WINDOW_WIDTH 	1366
 # define WINDOW_HEIGHT 	768
-# define MINIMAP_WIDTH	WINDOW_WIDTH / 5
-# define MINIMAP_HEIGHT	WINDOW_HEIGHT / 4
 
 typedef struct t_idpaths
 {
@@ -140,6 +137,7 @@ typedef struct t_window
 	int			width;
 	int			floor;
 	int			ceil;
+	double		fov;
 }				t_window;
 
 void		check_extension(char *filename, char *extension);
@@ -181,7 +179,15 @@ int			north_south(char *data, t_config *config, int i);
 int			west_east(char *data, t_config *config, int i);
 int			floor_color(t_config *config, char **rgb);
 int			ceiling_color(t_config *config, char **rgb);
-
+void		arrow_movement(int keycode, t_window *window);
+void		moving_right(int keycode, t_window *window);
+void		moving_left(int keycode, t_window *window);
+void		moving_up(int keycode, t_window *window);
+void		moving_down(int keycode, t_window *window);
+void		round_angles(t_window *window);
+int			vert_map_limits(t_window *window);
+void		right_ray(t_window *window, int i);
+void		find_distance(t_window *window);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);
@@ -194,7 +200,7 @@ void		line(double x, double y, t_window *window, int color);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			facing_right(t_window *window, double angle);
 int			facing_down(t_window *window, double angle);
-void		draw_line(t_window *window, int x, int y, int endX, int endY);
+double		ray_dis(t_window *window, double x, double y);
 void		first_vertical_step(t_window *window);
 void		vertical_steps(t_window *window, double angle);
 void		first_horizental_step(t_window *window, double angle);
@@ -207,5 +213,6 @@ int			get_pixel(t_texture *texture, int y, int x);
 int			encode_rgb(int red, int green, int blue);
 void		draw_floor(t_window *window);
 void		draw_ceiling(t_window *window);
+//void		wall_hit(t_window *window, int i);
 
 #endif

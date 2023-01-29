@@ -20,6 +20,8 @@ SRCS =	main.c	\
 		draw_minimap.c \
 		str_mnp_2.c \
 		settings.c \
+		extra_functions.c \
+		more_extra_functions.c \
 
 all : $(NAME)
 
