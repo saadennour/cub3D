@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 18:57:55 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 19:00:26 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct t_window
 	t_texture	*south;
 	t_texture	*east;
 	t_texture	*west;
+	t_texture	*weapon;
 	void		*mlx;
 	void		*win;
 	char		**map;
