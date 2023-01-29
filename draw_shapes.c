@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:00:48 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/28 16:44:06 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:51:20 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	if (x < 0 || x >= WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
 		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	line(double x, double y, t_window *window, int color)
-{
-	double deltaX = cos(window->rotation_angle);
-	double deltaY = sin(window->rotation_angle);
-	double tmpcos = deltaX;
-	double tmpsin = deltaY;
-	while (tmpcos < 20 && tmpsin < 20)
-	{
-		my_mlx_pixel_put(window->px, x, y, color);
-		x += deltaX;
-		y += deltaY;
-		tmpcos++;
-		tmpsin++;
-	}
+	*(unsigned int *)dst = color;
 }
 
 void	draw_square(int x, int y, t_window *window, int color)
@@ -80,8 +64,8 @@ void	draw_ceiling(t_window *window)
 
 void	draw_floor(t_window *window)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = WINDOW_HEIGHT / 2;
 	x = 0;
