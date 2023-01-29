@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 21:54:04 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:49:25 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	int	fd;
-	int	i=0,j=0;
+	int			fd;
 	t_config	config;
 
 	if (ac == 2)
@@ -28,21 +27,6 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		config = get_config(fd);
-		printf ("%s\n", config.idpaths->north_path);
-		printf ("%s\n", config.idpaths->south_path);
-		printf ("%s\n", config.idpaths->east_path);
-		printf ("%s\n", config.idpaths->west_path);
-		while (i < 3)
-			printf ("%d|\n", config.colors->floor[i++]);
-		while (j < 3)
-			printf ("%d|\n", config.colors->ceiling[j++]);
-		i = 0;
-		while (config.data[i])
-		{
-			printf ("%s|\n", config.data[i]);
-			i++;
-		}
-		// system("leaks cub3D");
 		start_game(&config);
 	}
 	else

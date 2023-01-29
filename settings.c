@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 21:38:41 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 22:12:45 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:46:57 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,18 @@ int	floor_color(t_config *config, char **rgb)
 			config->colors->floor[1], config->colors->floor[2]);
 	free_2darray (rgb);
 	return (64);
+}
+
+void	check_extension(char *filename, char *extension)
+{
+	int	i;
+
+	i = ft_strlen(filename) - 1;
+	while (filename[i] != '.')
+		i--;
+	if (ft_strcmp(&filename[i], extension))
+	{
+		printf ("Error : Filename doesn't end with %s extension\n", extension);
+		exit (0);
+	}
 }
