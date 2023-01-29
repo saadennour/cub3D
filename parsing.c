@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 06:48:19 by saadennour        #+#    #+#             */
-/*   Updated: 2023/01/29 18:20:16 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 18:59:14 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_config	get_config(int fd)
 	t_config	config;
 
 	config.data = getdata(fd);
-	// if (mapislast(config.data, &config) == 0)
-	// 	handle_error(&config);
-	// get_map(&config);
+	if (mapislast(config.data, &config) == 0)
+		handle_error(&config);
+	get_map(&config);
 	return (config);
 }
 

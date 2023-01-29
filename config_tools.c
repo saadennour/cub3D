@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:38 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 18:56:59 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 18:59:23 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	set_colors(char *data, t_config *config, int i)
 	j = i + 1;
 	j = whitesp_loop(data, j);
 	only_rgb(config, data, j, i);
-	// printf ("line => %s\n", data);
 	rgb = ft_split(&data[j], ',');
 	if (ft_strncmp(&data[i], "F ", 2) == 0)
 		code = floor_color(config, rgb);
