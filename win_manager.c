@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 14:49:27 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:57:10 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,14 @@ int	just_a_func(int button, int x, int y, t_window *window)
 		window->rotation_angle += 2 * M_PI / 180;
 		if (window->ray.start >= 2.0 * M_PI)
 			window->rotation_angle -= 2.0 * M_PI;
-		minimap(window->map, window);
 	}
 	else if (button == 1)
 	{
 		window->rotation_angle -= 2 * M_PI / 180;
 		if (window->ray.start <= 0.0)
 			window->rotation_angle += 2.0 * M_PI;
-		minimap(window->map, window);
 	}
-	else
-		minimap(window->map, window);
+	minimap(window->map, window);
 	return (0);
 }
 

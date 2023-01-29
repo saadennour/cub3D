@@ -22,6 +22,7 @@ SRCS =	main.c	\
 		settings.c \
 		extra_functions.c \
 		more_extra_functions.c \
+		map_config.c \
 
 all : $(NAME)
 

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_config.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 18:19:04 by sfarhan          ###   ########.fr       */
+/*   Created: 2023/01/29 15:59:08 by sfarhan           #+#    #+#             */
+/*   Updated: 2023/01/29 18:21:33 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	main(int ac, char **av)
+void	only_rgb(t_config *config, char *data, int i, int start)
 {
-	int			fd;
-	t_config	config;
+	int	count;
 
-	if (ac == 2)
+	count = 0;
+	while (data[i])
 	{
-		check_extension(av[1], ".cub");
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-		{
-			printf ("This map doesnt exist.\n");
-			return (1);
-		}
-		config = get_config(fd);
-		// start_game(&config);
+		if (data[i] == ',')
+			count++;
+		i++;
 	}
-	else
-		printf ("Error : There is more than one argument\n");
-	return (0);
+	if (ft_strncmp(&data[start], "F ", 2) == 0
+		|| ft_strncmp(&data[start], "C ", 2) == 0)
+	{
+		if (count != 2)
+			handle_error(config);
+	}
 }

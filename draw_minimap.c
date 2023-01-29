@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:43:24 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/29 15:16:43 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:58:01 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	zoom_in(t_window *window, t_minimap *mini, char **map)
 	}
 }
 
-void	draw_background( t_minimap *mini)
+void	draw_background(t_minimap *mini)
 {
 	int	x;
 	int	y;
