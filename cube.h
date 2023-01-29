@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 19:00:26 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 21:35:19 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct t_colors
 	int	xceil;
 }				t_colors;
 
+//return line in config.line loop on until find 6 ids then check if there's is \n after a non empty line
 typedef struct t_config
 {
 	char		**data;
@@ -172,7 +173,6 @@ void		mapscan(t_config *config);
 void		get_map(t_config *config);
 void		check_walls(t_config *config);
 void		free_struct(t_config *config);
-char		*ft_strdup(const char *src);
 void		free_2darray(char **str);
 int			shut(t_window *window);
 int			key_hook(int keycode, t_window *window);
@@ -197,7 +197,9 @@ int			vert_map_limits(t_window *window);
 void		right_ray(t_window *window, int i);
 void		find_distance(t_window *window);
 void		only_rgb(t_config *config, char *data, int i, int start);
-void		eol_to_space(char **file);
+int			check_emptyline(char *data);
+int			check_ifallone(char *data);
+int			check_previous(char *data);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);
@@ -206,7 +208,6 @@ void		draw_square(int x, int y, t_window *window, int color);
 void		minimap(char **map, t_window *window);
 void		draw_player(double x, double y, t_window *window, int color);
 void		drawing_rays(t_window *window);
-void		line(double x, double y, t_window *window, int color);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			facing_right(t_window *window, double angle);
 int			facing_down(t_window *window, double angle);
