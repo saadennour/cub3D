@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:59:08 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 21:41:00 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:52:12 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	only_rgb(t_config *config, char *data, int i, int start)
 	}
 }
 
-int	check_emptyline(char *data)
+int	check_ifmap(char *data)
 {
 	int	i;
 
@@ -65,4 +65,30 @@ int	check_previous(char *data)
 	if (i == 0 || data[i] == '\n')
 		return (1);
 	return (0);
+}
+
+int	check_emptyline(char *line, char **data, int value)
+{
+	char	*copy;
+
+	copy = *data;
+	if (value == 0)
+		value = check_ifmap(line);
+	if (value == 1 && !ft_strcmp(line, "\n") && check_previous(*data) == 1)
+		value = 2;
+	else if (value == 1 && !ft_strcmp(line, "\n") && check_previous(*data) == 0)
+	{
+		printf ("Error\n");
+		exit (0);
+	}
+	*data = ft_strjoin(copy, line);
+	if (value == 2 && check_ifmap(line) == 1 && check_ifallone(line) == 0)
+	{
+		printf ("Errooooor\n");
+		exit (0);
+	}
+	else if (value == 2 && check_ifmap(line) == 1 && check_ifallone(line) == 1)
+		value = 1;
+	free (copy);
+	return (value);
 }

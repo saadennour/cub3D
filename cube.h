@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 22:42:16 by saadennour       ###   ########.fr       */
+/*   Updated: 2023/01/30 13:46:23 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-// # include <mlx.h>
-# include "mlx/mlx.h"
+# include <mlx.h>
 
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
@@ -54,7 +53,6 @@ typedef struct t_colors
 	int	xceil;
 }				t_colors;
 
-//return line in config.line loop on until find 6 ids then check if there's is \n after a non empty line
 typedef struct t_config
 {
 	char		**data;
@@ -197,9 +195,10 @@ int			vert_map_limits(t_window *window);
 void		right_ray(t_window *window, int i);
 void		find_distance(t_window *window);
 void		only_rgb(t_config *config, char *data, int i, int start);
-int			check_emptyline(char *data);
+int			check_ifmap(char *data);
 int			check_ifallone(char *data);
 int			check_previous(char *data);
+int			check_emptyline(char *line, char **data, int value);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);
