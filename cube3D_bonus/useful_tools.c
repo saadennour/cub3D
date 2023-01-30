@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   useful_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:21:55 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 15:52:12 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 int	last_char(char *line)
 {

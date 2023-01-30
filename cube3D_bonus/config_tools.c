@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   config_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:38 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 21:39:44 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 char	**getdata(int fd)
 {
 	char	*line;
 	char	*data;
-	char	*copy;
 	char	**file;
 	int		value;
 
@@ -26,27 +25,7 @@ char	**getdata(int fd)
 	{
 		line = get_next_line(fd);
 		if (line)
-		{
-			copy = data;
-			if (value == 0)
-				value = check_emptyline(line);
-			if (value == 1 && !ft_strcmp(line, "\n") && check_previous(data) == 1)
-				value = 2;
-			else if (value == 1 && !ft_strcmp(line, "\n") && check_previous(data) == 0)
-			{
-				printf ("Error\n");
-				exit (0);
-			}
-			data = ft_strjoin(copy, line);
-			if (value == 2 && check_emptyline(line) == 1 && check_ifallone(line) == 0)
-			{
-				printf ("Errooooor\n");
-				exit (0);
-			}
-			else if (value == 2 && check_emptyline(line) == 1 && check_ifallone(line) == 1)
-				value = 1;
-			free (copy);
-		}
+			value = check_emptyline(line, &data, value);
 		else
 			break ;
 		free (line);

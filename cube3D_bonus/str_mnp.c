@@ -6,11 +6,11 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:56 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/28 20:14:53 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 int	ft_strlen(char *str)
 {

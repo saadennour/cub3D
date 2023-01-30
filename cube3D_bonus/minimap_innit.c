@@ -6,11 +6,11 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:55:43 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/29 20:45:07 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 void	draw_mini_square(int x, int y, t_minimap *mini, int color)
 {
