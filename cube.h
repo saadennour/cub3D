@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/30 19:08:57 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:14:18 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 # include <math.h>
 # include <mlx.h>
-//# include "mlx/mlx.h"
 
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
@@ -53,9 +52,6 @@ typedef struct t_colors
 	int	xfloor;
 	int	xceil;
 }				t_colors;
-
-//return line in config.line loop on until find 6 ids 
-//then check if there's is \n after a non empty line
 
 typedef struct t_config
 {
@@ -180,9 +176,10 @@ int			vert_map_limits(t_window *window);
 void		right_ray(t_window *window, int i);
 void		find_distance(t_window *window);
 void		only_rgb(t_config *config, char *data, int i, int start);
-int			check_emptyline(char *data);
+int			check_ifmap(char *data);
 int			check_ifallone(char *data);
 int			check_previous(char *data);
+int			check_emptyline(char *line, char **data, int value);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		start_game(t_config *config);
