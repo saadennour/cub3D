@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:08:53 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/30 19:09:52 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 19:05:57 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	get_images(t_config *config, t_window *window)
 	window->west->img = mlx_xpm_file_to_image(window->mlx,
 			config->idpaths->west_path,
 			&window->west->width, &window->west->height);
+	window->weapon->img = mlx_xpm_file_to_image(window->mlx,
+			"textures/silah_wtsp.xpm",
+			&window->weapon->width, &window->weapon->height);
 }
 
 void	image_addr(t_window *window)
@@ -51,6 +54,9 @@ void	image_addr(t_window *window)
 	window->west->data->addr = mlx_get_data_addr(window->west->img,
 			&window->west->data->bits_per_pixel,
 			&window->west->data->line_length, &window->west->data->endian);
+	window->weapon->data->addr = mlx_get_data_addr(window->weapon->img,
+			&window->weapon->data->bits_per_pixel,
+			&window->weapon->data->line_length, &window->weapon->data->endian);
 }
 
 void	texture_init(t_config *config, t_window *window)
@@ -59,10 +65,12 @@ void	texture_init(t_config *config, t_window *window)
 	window->east = malloc(sizeof(t_texture));
 	window->west = malloc(sizeof(t_texture));
 	window->south = malloc(sizeof(t_texture));
+	window->weapon = malloc(sizeof(t_texture));
 	window->north->data = malloc(sizeof(t_data));
 	window->south->data = malloc(sizeof(t_data));
 	window->east->data = malloc(sizeof(t_data));
 	window->west->data = malloc(sizeof(t_data));
+	window->weapon->data = malloc(sizeof(t_data));
 	get_images(config, window);
 	image_addr(window);
 }

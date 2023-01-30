@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:59 by aelaoufi          #+#    #+#             */
-/*   Updated: 2023/01/30 19:08:14 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/29 19:27:59 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ void	tree_d_drawing(t_window *window)
 		i++;
 		window->ray.start += window->fov / NUMBER_OF_RAYS;
 	}
+	draw_weapon(window);
 }

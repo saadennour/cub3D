@@ -6,7 +6,7 @@
 /*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/30 19:09:25 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:05:57 by aelaoufi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	start_game(t_config *config)
 	find_player(&window, config->data);
 	minimap(config->data, &window);
 	mlx_hook(window.win, 2, 1L << 0, key_hook, &window);
+	mlx_mouse_hook(window.win, just_a_func, &window);
 	mlx_hook(window.win, 17, 1L << 0, shut, &window);
 	mlx_loop(window.mlx);
 }
@@ -44,10 +45,12 @@ int	shut(t_window *window)
 	free(window->south->data);
 	free(window->east->data);
 	free(window->west->data);
+	free(window->weapon->data);
 	free(window->north);
 	free(window->south);
 	free(window->east);
 	free(window->west);
+	free(window->weapon);
 	free_2darray(window->map);
 	system("leaks cub3D");
 	exit (0);
@@ -71,6 +74,31 @@ void	round_angles(t_window *window)
 		|| (sin(window->rotation_angle) < 0
 			&& sin(window->rotation_angle) > -0.01))
 		window->si = 0;
+}
+
+int	just_a_func(int button, int x, int y, t_window *window)
+{
+	mlx_destroy_image(window->mlx, window->img);
+	(void)x;
+	(void)y;
+	if (button == 2)
+	{
+		window->rotation_angle += 2 * M_PI / 180;
+		if (window->ray.start >= 2.0 * M_PI)
+			window->rotation_angle -= 2.0 * M_PI;
+	}
+	else if (button == 1)
+	{
+		window->rotation_angle -= 2 * M_PI / 180;
+		if (window->ray.start <= 0.0)
+			window->rotation_angle += 2.0 * M_PI;
+	}
+	free(window->px);
+	free(window->ray.xrays);
+	free(window->ray.yrays);
+	free(window->ray.v_or_h);
+	minimap(window->map, window);
+	return (0);
 }
 
 int	key_hook(int keycode, t_window *window)
