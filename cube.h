@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:31:27 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 21:42:35 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 22:42:16 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
-//# include "mlx/mlx.h"
+// # include <mlx.h>
+# include "mlx/mlx.h"
 
 # define BEIGE			0XF0F8FF
 # define SKIN			0XE9967A
@@ -197,7 +197,9 @@ int			vert_map_limits(t_window *window);
 void		right_ray(t_window *window, int i);
 void		find_distance(t_window *window);
 void		only_rgb(t_config *config, char *data, int i, int start);
-void		eol_to_space(char **file);
+int			check_emptyline(char *data);
+int			check_ifallone(char *data);
+int			check_previous(char *data);
 
 // DRAWING THE MAP AND ITS COMPONENTS
 void		draw_minimap(char **map, t_window *window);

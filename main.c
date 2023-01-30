@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 18:59:30 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 23:12:43 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		config = get_config(fd);
+		printf ("%d\n", config.colors->xceil);
 		start_game(&config);
+		system("leaks cub3D");
 	}
 	else
 		printf ("Error : There is more than one argument\n");

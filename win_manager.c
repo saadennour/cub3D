@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saadennour <saadennour@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/29 15:57:10 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/29 23:50:18 by saadennour       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ void	start_game(t_config *config)
 int	shut(t_window *window)
 {
 	mlx_destroy_window(window->mlx, window->win);
+	free(window->px);
+	free(window->ray.xrays);
+	free(window->ray.yrays);
+	free(window->ray.v_or_h);
+	free(window->north->data);
+	free(window->south->data);
+	free(window->east->data);
+	free(window->west->data);
+	free(window->weapon->data);
+	free(window->north);
+	free(window->south);
+	free(window->east);
+	free(window->west);
+	free(window->weapon);
+	free_2darray(window->map);
+	system("leaks cub3D");
 	exit (0);
 }
 
@@ -77,22 +93,25 @@ int	just_a_func(int button, int x, int y, t_window *window)
 		if (window->ray.start <= 0.0)
 			window->rotation_angle += 2.0 * M_PI;
 	}
+	free(window->px);
+	free(window->ray.xrays);
+	free(window->ray.yrays);
+	free(window->ray.v_or_h);
 	minimap(window->map, window);
 	return (0);
 }
 
 int	key_hook(int keycode, t_window *window)
 {
-	int	x;
-	int	y;
-
-	x = window->x;
-	y = window->y;
 	arrow_movement(keycode, window);
 	moving_left(keycode, window);
 	moving_right(keycode, window);
 	moving_up(keycode, window);
 	moving_down(keycode, window);
+	free(window->px);
+	free(window->ray.xrays);
+	free(window->ray.yrays);
+	free(window->ray.v_or_h);
 	minimap(window->map, window);
 	return (0);
 }
