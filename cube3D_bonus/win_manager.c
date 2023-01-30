@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:50:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:11:50 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	shut(t_window *window)
 	free(window->west);
 	free(window->weapon);
 	free_2darray(window->map);
-	system("leaks cub3D");
 	exit (0);
 }
 

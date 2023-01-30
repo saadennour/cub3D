@@ -51,10 +51,10 @@ SRCS_BONUS =	cube3D_bonus/main.c	\
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-	gcc $(FLAGS) $(SRCS) -o $(NAME) #-fsanitize=address -g
+	gcc $(FLAGS) $(SRCS) -o $(NAME)
 	
 bonus :		
-	gcc $(FLAGS) $(SRCS_BONUS) -o $(NAME_BONUS) #-fsanitize=address -g
+	gcc $(FLAGS) $(SRCS_BONUS) -o $(NAME_BONUS)
 
 clean :
 	rm -rf $(NAME) $(NAME_BONUS)
