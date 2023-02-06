@@ -6,7 +6,7 @@
 /*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:03:34 by sfarhan           #+#    #+#             */
-/*   Updated: 2023/01/30 20:11:33 by sfarhan          ###   ########.fr       */
+/*   Updated: 2023/01/30 20:29:47 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		config = get_config(fd);
-		printf ("%d\n", config.colors->xceil);
 		start_game(&config);
 	}
 	else

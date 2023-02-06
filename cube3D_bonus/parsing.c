@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelaoufi <aelaoufi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfarhan <sfarhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 06:48:19 by saadennour        #+#    #+#             */
-/*   Updated: 2023/01/30 19:22:10 by aelaoufi         ###   ########.fr       */
+/*   Updated: 2023/02/06 22:20:17 by sfarhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,26 @@ void	check_walls(t_config *config)
 	int	i;
 	int	j;
 
-	i = 7;
-	while (i < line_counter(config->data) - 1)
+	i = 6;
+	while (++i < line_counter(config->data) - 1)
 	{
 		if (!ft_strchr(config->data[i][0], "1 "))
 			map_error(config);
-		j = 1;
-		while (config->data[i][j])
+		j = 0;
+		while (config->data[i][++j])
 		{
 			if (ft_strchr(config->data[i][j], "0NSWE"))
 			{
 				if (ft_strchr(config->data[i][j + 1], " ")
 					|| ft_strchr(config->data[i][j - 1], " ")
 					|| ft_strchr(config->data[i - 1][j], " ")
-					|| ft_strchr(config->data[i + 1][j], " "))
+					|| ft_strchr(config->data[i + 1][j], " ")
+					|| config->data[i + 1][j] == '\0'
+					|| config->data[i - 1][j] == '\0')
 					map_error(config);
 			}
-			j++;
 		}
 		if (!ft_strchr(config->data[i][j - 1], "1 "))
 			map_error(config);
-		i++;
 	}
 }
